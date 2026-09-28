@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Casse</title>
+<title>Raccolte</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -12,8 +12,9 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --verde:#9DBF60;--grigio:#77797a;--grigio-chiaro:#aaaaaa;
-  --navy:#4A4C4D;--blue-light:#D5E3B7;--blue-xlight:#EEF5E3;
-  --accent:#9DBF60;
+  --navy:#4A4C4D;--blue:#77797a;--blue-mid:#9DBF60;
+  --blue-light:#D5E3B7;--blue-xlight:#EEF5E3;
+  --accent:#9DBF60;--accent-light:#EEF5E3;
   --red:#C0392B;--red-light:#FDECEA;
   --green:#9DBF60;--green-light:#EEF5E3;
   --amber:#9a6d00;--amber-light:#FFF9E6;
@@ -62,23 +63,18 @@ body{background:var(--g50);color:var(--g900);min-height:100vh;font-size:14px}
 .spn{display:inline-block;width:13px;height:13px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;vertical-align:-2px}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* ── Buttons / badges / forms ── */
+/* ── Buttons / badges / forms (standard Medical Group) ── */
 .btn{display:inline-flex;align-items:center;gap:6px;padding:7px 15px;border-radius:var(--rsm);font-family:'Raleway',sans-serif;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .17s;white-space:nowrap}
 .bpg{background:var(--verde);color:#fff}.bpg:hover{background:#7da048}
 .bs{background:var(--g100);color:var(--g700);border:1px solid var(--g200)}.bs:hover{background:var(--g200)}
 .bd{background:var(--red-light);color:var(--red)}.bd:hover{background:var(--red);color:#fff}
 .bic{padding:6px;border-radius:var(--rsm);background:var(--g100);border:1px solid var(--g200);cursor:pointer;transition:all .17s;font-size:14px;font-family:'Raleway',sans-serif}.bic:hover{background:var(--g200)}
-.bamb{background:var(--amber-light);color:var(--amber);border:1px solid #e6c800}.bamb:hover{background:#f0dc78}
 
 .bg{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:700;white-space:nowrap}
 .bg-on{background:var(--green-light);color:#1A7A40}.bg-off{background:var(--g100);color:var(--g500)}
 .bg-adm{background:var(--navy);color:#fff}.bg-usr{background:var(--g100);color:var(--g700)}
-.bg-resp{background:#E8F0FB;color:#3B7DD8}.bg-cont{background:var(--amber-light);color:var(--amber)}
+.bg-inc{background:#E8F0FB;color:#3B7DD8}.bg-ref{background:var(--blue-xlight);color:var(--verde)}
 .bg-amber{background:var(--amber-light);color:var(--amber)}.bg-red{background:var(--red-light);color:var(--red)}
-.bg-green{background:var(--green-light);color:#1A7A40}
-.bg-aperta{background:var(--green-light);color:#1A7A40}
-.bg-chiusa{background:var(--g100);color:var(--g500)}
-.bg-sbloccata{background:var(--amber-light);color:var(--amber)}
 
 .fg{display:flex;flex-direction:column;gap:5px;margin-bottom:14px}
 .fl{font-size:11.5px;font-weight:700;color:var(--g700);text-transform:uppercase;letter-spacing:.4px}
@@ -86,12 +82,9 @@ body{background:var(--g50);color:var(--g900);min-height:100vh;font-size:14px}
 .fi:focus,.fse:focus,.fta:focus{border-color:var(--verde);box-shadow:0 0 0 3px rgba(157,191,96,.15)}
 .fta{resize:vertical;min-height:70px}.fse{cursor:pointer}
 .fr{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.fr3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
 .alert{padding:11px 15px;border-radius:var(--rsm);font-size:13px;display:flex;align-items:flex-start;gap:9px;line-height:1.5}
 .ai{background:var(--blue-xlight);color:var(--navy)}
 .aw{background:var(--red-light);color:var(--red)}
-.ag{background:var(--green-light);color:#1A7A40}
-.aa{background:var(--amber-light);color:var(--amber)}
 
 .dt{width:100%;border-collapse:collapse;font-size:13px}
 .dt th{padding:9px 14px;text-align:left;font-size:10px;font-weight:700;color:var(--g500);text-transform:uppercase;letter-spacing:.5px;background:var(--g50);border-bottom:2px solid var(--g200)}
@@ -138,62 +131,10 @@ body{background:var(--g50);color:var(--g900);min-height:100vh;font-size:14px}
 .search-wrap input:focus{border-color:var(--verde)}
 .search-wrap::before{content:'🔍';position:absolute;left:9px;top:50%;transform:translateY(-50%);font-size:11px}
 
+tr.row-delta td{background:var(--red-light)!important}
+tr.row-annullata td{background:#D8DAD5!important;color:var(--g500)!important}
+.thumb{width:46px;height:46px;border-radius:6px;object-fit:cover;border:1px solid var(--g200);cursor:pointer}
 .empty-row{text-align:center;padding:40px 20px;color:var(--g500)}
-.card{background:#fff;border:1px solid var(--g200);border-radius:var(--r);box-shadow:var(--sh-sm);margin-bottom:16px}
-.card-head{padding:14px 18px;border-bottom:1px solid var(--g100);display:flex;align-items:center;justify-content:space-between}
-.card-body{padding:18px}
-.card-title{font-size:13px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.4px}
-
-/* ── Casse week nav ── */
-.week-nav{display:flex;align-items:center;gap:10px}
-.week-nav button{padding:6px 12px;font-size:12px;font-weight:700;border:1.5px solid var(--g200);border-radius:var(--rsm);background:#fff;color:var(--g700);cursor:pointer;transition:all .15s;font-family:'Raleway',sans-serif}
-.week-nav button:hover{border-color:var(--verde);color:var(--verde)}
-.week-label{font-size:14px;font-weight:700;color:var(--navy);min-width:200px;text-align:center}
-
-/* ── Casse operatori grid ── */
-.op-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:16px}
-.op-card{background:#fff;border:1px solid var(--g200);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden}
-.op-card-head{padding:12px 16px;background:var(--g50);border-bottom:1px solid var(--g100);display:flex;align-items:center;justify-content:space-between}
-.op-card-name{font-weight:700;color:var(--navy);font-size:13px}
-.op-card-body{padding:14px 16px}
-.op-stat{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid var(--g100);font-size:12.5px}
-.op-stat:last-child{border-bottom:none;padding-top:8px;margin-top:3px}
-.op-stat-label{color:var(--g500);font-weight:600}
-.op-stat-val{font-weight:700;color:var(--g900)}
-.op-stat-val.pos{color:#1A7A40}.op-stat-val.neg{color:var(--red)}.op-stat-val.total{font-size:15px;color:var(--navy)}
-
-/* ── Riepilogo sede ── */
-.riepilogo-sede{background:var(--blue-xlight);border:1.5px solid var(--verde);border-radius:var(--r);padding:16px 20px;margin-bottom:20px}
-.riepilogo-sede h3{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px;text-transform:uppercase;letter-spacing:.4px}
-.rs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
-.rs-item{background:#fff;border-radius:var(--rsm);padding:10px 14px;border:1px solid var(--blue-light)}
-.rs-val{font-size:20px;font-weight:800;color:var(--navy)}
-.rs-lbl{font-size:10.5px;color:var(--g500);font-weight:600;text-transform:uppercase;letter-spacing:.3px;margin-top:2px}
-
-/* ── Movimenti table ── */
-tr.row-uscita td{background:#FFF9E6}
-tr.row-uscita-ndc td{background:var(--red-light)}
-.tipo-badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:700}
-.tipo-contante{background:#E8F0FB;color:#3B7DD8}
-.tipo-assegno{background:var(--blue-xlight);color:var(--verde)}
-.tipo-ndc{background:var(--red-light);color:var(--red)}
-.tipo-varie{background:var(--amber-light);color:var(--amber)}
-
-/* ── Conferma contabilità ── */
-.conf-box{background:#fff;border:1.5px solid var(--g200);border-radius:var(--r);padding:18px;margin-bottom:16px}
-.conf-box.confirmed{border-color:var(--verde);background:var(--green-light)}
-.conf-box.delta-neg{border-color:var(--red);background:var(--red-light)}
-
-/* ── Pagination ── */
-.pag{display:flex;align-items:center;gap:6px;margin-top:14px;justify-content:flex-end}
-.pag button{padding:5px 11px;border:1px solid var(--g200);border-radius:var(--rsm);background:#fff;font-size:12px;font-weight:600;cursor:pointer;font-family:'Raleway',sans-serif;color:var(--g700)}
-.pag button.active{background:var(--verde);color:#fff;border-color:var(--verde)}
-.pag button:hover:not(.active){background:var(--g100)}
-.pag-info{font-size:12px;color:var(--g500);margin-right:6px}
-
-/* ── Upload preview ── */
-.file-preview{margin-top:8px;display:flex;align-items:center;gap:10px;font-size:12px;color:var(--g700);background:var(--g100);border-radius:var(--rsm);padding:8px 12px}
-.file-preview a{color:var(--verde);font-weight:600}
 </style>
 </head>
 <body>
@@ -219,7 +160,7 @@ tr.row-uscita-ndc td{background:var(--red-light)}
     <div id="tb-top">
       <div id="tb-logo"></div>
       <div id="tb-right">
-        <span id="tb-sede" style="font-size:12px;color:var(--g500)"></span>
+        <span id="tb-ver"></span>
         <span id="tb-user"></span>
         <span id="tb-role"></span>
         <button id="lout" onclick="doLogout()">Esci</button>
@@ -249,47 +190,40 @@ const CFG={
   KEY:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImljenNkcWNudmF1b3B3a3VzcHRpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4NTQ0MjMsImV4cCI6MjA5MjQzMDQyM30.SmcRHPLM2PEq4Hn-5CQhMyQKoz0PN_0lbN_X3l9MNUE',
   FN:'https://iczsdqcnvauopwkuspti.supabase.co/functions/v1',
 };
-const T=n=>`casse_${n}`;
-const VER='1.0.0';
+const T=n=>`servizi_${n}`;
 
 const NAV_MAIN=[
-  {id:'cassa',    l:'La mia cassa', r:['operatore']},
-  {id:'sede',     l:'Sede',         r:['responsabile']},
-  {id:'overview', l:'Overview',     r:['admin','contabilita']},
+  {id:'dashboard', l:'Dashboard', r:['admin','incaricato','referente']},
+  {id:'raccolte',  l:'Raccolte',  r:['admin','incaricato','referente']},
 ];
 const NAV_ADMIN=[
-  {id:'conferme',   l:'Conferme contabilità', r:['admin','contabilita']},
-  {id:'utenti',     l:'Utenti',               r:['admin']},
-  {id:'log',        l:'Log attività',          r:['admin']},
-  {id:'impostazioni',l:'Impostazioni',         r:['admin']},
+  {id:'statistiche', l:'Statistiche', r:['admin']},
+  {id:'referenti', l:'Sedi & referenti', r:['admin']},
+  {id:'utenti',    l:'Utenti',    r:['admin']},
+  {id:'log',       l:'Log',       r:['admin']},
 ];
 
+// STATO
 const S={
   user:null,token:null,
-  profili:[],sedi:[],config:{},
-  settimane:[],movimenti:[],conferme:[],log:[],
-  page:'',
-  // filtri
-  logPage:0,logSrch:'',
-  movPage:0,movFiltroTipo:'',
-  // settimana corrente (ISO)
-  weekOffset:0, // 0=corrente, -1=precedente...
-  sedeId:null,  // override sede per admin
+  profili:[],sedi:[],sedeReferenti:[],raccolte:[],log:[],
+  page:'dashboard',
+  raccolteFiltro:{stato:'',search:''},
 };
 
-// ════════════════
 // UTILS
-// ════════════════
 const $=id=>document.getElementById(id);
 const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 function fmt(d){if(!d)return'—';const dt=typeof d==='string'?new Date(d.length===10?d+'T00:00:00':d):d;return dt.toLocaleDateString('it-IT',{day:'2-digit',month:'2-digit',year:'numeric'});}
 function fmtDT(d){if(!d)return'—';const dt=new Date(d);return dt.toLocaleDateString('it-IT',{day:'2-digit',month:'2-digit',year:'numeric'})+' '+dt.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'});}
 function eur(n){if(n==null||n==='')return'—';return Number(n).toLocaleString('it-IT',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';}
-function eurSign(n){if(n==null||n==='')return'—';const v=Number(n);return(v>=0?'+':'')+v.toLocaleString('it-IT',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';}
 function fullName(p){return p?`${p.nome||''} ${p.cognome||''}`.trim():'—';}
+function geoLink(lat,lng){
+  if(lat==null||lng==null)return '';
+  return `<a href="https://maps.google.com/?q=${lat},${lng}" target="_blank" style="font-size:11px;color:var(--verde);font-weight:700;margin-left:6px">📍 mappa</a>`;
+}
 function profById(id){return S.profili.find(p=>p.id===id);}
 function sedeById(id){return S.sedi.find(s=>s.id===id);}
-function sedeLabel(id){const s=sedeById(id);return s?s.nome||s.indirizzo||'Sede':'—';}
 
 let _tid;
 function toast(msg,type='ok'){
@@ -298,67 +232,17 @@ function toast(msg,type='ok'){
   _tid=setTimeout(()=>el.className='',3200);
 }
 
-// ── Settimana ISO ────────────────────────────────────────
-function getISOWeek(d){
-  const dt=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()));
-  const day=dt.getUTCDay()||7;
-  dt.setUTCDate(dt.getUTCDate()+4-day);
-  const yearStart=new Date(Date.UTC(dt.getUTCFullYear(),0,1));
-  return{anno:dt.getUTCFullYear(),settimana:Math.ceil((((dt-yearStart)/86400000)+1)/7)};
-}
-function getMondayOfISOWeek(anno,settimana){
-  const simple=new Date(anno,0,1+( settimana-1)*7);
-  const dow=simple.getDay();
-  const ISOweekStart=new Date(simple);
-  if(dow<=4)ISOweekStart.setDate(simple.getDate()-simple.getDay()+1);
-  else ISOweekStart.setDate(simple.getDate()+8-simple.getDay());
-  return ISOweekStart;
-}
-function currentWeekInfo(){
-  const base=new Date();
-  base.setDate(base.getDate()+S.weekOffset*7);
-  const{anno,settimana}=getISOWeek(base);
-  const lun=getMondayOfISOWeek(anno,settimana);
-  const dom=new Date(lun);dom.setDate(lun.getDate()+6);
-  return{anno,settimana,lun,dom};
-}
-function weekLabel(){
-  const{anno,settimana,lun,dom}=currentWeekInfo();
-  return`Settimana ${settimana} / ${anno} — ${fmt(lun)} → ${fmt(dom)}`;
-}
-
-// ── Tipo movimento ───────────────────────────────────────
-const TIPI={
-  incasso_contante:{l:'Incasso contante',badge:'tipo-contante',sign:1},
-  incasso_assegno: {l:'Incasso assegno', badge:'tipo-assegno',sign:1},
-  uscita_ndc:      {l:'Uscita NDC',      badge:'tipo-ndc',    sign:-1},
-  uscita_varie:    {l:'Uscita varie',    badge:'tipo-varie',  sign:-1},
-};
-function tipoBadge(tipo){const t=TIPI[tipo];if(!t)return esc(tipo);return`<span class="tipo-badge ${t.badge}">${t.l}</span>`;}
-function tipoSign(tipo){return(TIPI[tipo]||{sign:1}).sign;}
-
-// ── Ruolo badge ──────────────────────────────────────────
-function ruoloBadge(r){
-  const m={admin:'bg-adm',operatore:'bg-usr',responsabile:'bg-resp',contabilita:'bg-cont'};
-  const l={admin:'Admin',operatore:'Operatore',responsabile:'Responsabile',contabilita:'Contabilità'};
-  return`<span class="bg ${m[r]||'bg-usr'}">${l[r]||esc(r)}</span>`;
-}
-function statoBadge(s){return`<span class="bg bg-${s}">${s.charAt(0).toUpperCase()+s.slice(1)}</span>`;}
-
-// ════════════════
+// ══════════════════════════════════════════
 // SUPABASE REST
-// ════════════════
+// ══════════════════════════════════════════
 async function db(method,table,opts={}){
-  const{flt='',body=null,sel='*',ord='',lim='',cnt=false}=opts;
+  const{flt='',body=null,sel='*',ord='',lim=''}=opts;
   let url=`${CFG.URL}/rest/v1/${table}?select=${sel}`;
   if(flt)url+=`&${flt}`;if(ord)url+=`&order=${ord}`;if(lim)url+=`&limit=${lim}`;
-  const headers={'apikey':CFG.KEY,'Authorization':`Bearer ${S.token||CFG.KEY}`,'Content-Type':'application/json','Prefer':method==='POST'||method==='PATCH'?'return=representation':cnt?'count=exact':''};
-  if(cnt)headers['Range-Unit']='items';
+  const headers={'apikey':CFG.KEY,'Authorization':`Bearer ${S.token||CFG.KEY}`,'Content-Type':'application/json','Prefer':method==='POST'||method==='PATCH'?'return=representation':''};
   const res=await fetch(url,{method,headers,body:body?JSON.stringify(body):undefined});
   if(!res.ok){const e=await res.text();throw new Error(`${method} ${table}: ${e}`);}
-  if(method==='DELETE')return null;
-  if(cnt){const data=await res.json();const range=res.headers.get('Content-Range');const tot=range?parseInt(range.split('/')[1])||0:0;return{data,tot};}
-  return res.json();
+  return method==='DELETE'?null:res.json();
 }
 async function supaLogin(email,pwd){
   const res=await fetch(`${CFG.URL}/auth/v1/token?grant_type=password`,{method:'POST',headers:{'apikey':CFG.KEY,'Content-Type':'application/json'},body:JSON.stringify({email,password:pwd})});
@@ -370,42 +254,47 @@ async function callFn(name,body){
   const res=await fetch(`${CFG.FN}/${name}`,{method:'POST',headers:{'Authorization':`Bearer ${S.token}`,'Content-Type':'application/json'},body:JSON.stringify(body)});
   return res.json();
 }
-async function writeLog(azione,dettagli){
-  try{await db('POST',T('log'),{body:[{utente_id:S.user?.id||null,azione,dettagli:dettagli||null}]});}catch(e){}
+async function writeLog(azione,dettaglio){
+  try{await db('POST',T('log'),{body:[{utente_id:S.user?.id||null,azione,dettaglio:dettaglio||null}]});}catch(e){}
 }
 
-// ── Storage / signed URLs ────────────────────────────────
+// ══════════════════════════════════════════
+// STORAGE — bucket privati: serve un URL firmato per ogni visualizzazione
+// ══════════════════════════════════════════
 const _signedUrlCache={};
 async function getSignedUrl(bucket,path){
   if(!path)return null;
-  const k=`${bucket}/${path}`;
-  const c=_signedUrlCache[k];
-  if(c&&c.exp>Date.now())return c.url;
+  const cacheKey=`${bucket}/${path}`;
+  const cached=_signedUrlCache[cacheKey];
+  if(cached&&cached.exp>Date.now())return cached.url;
   const res=await fetch(`${CFG.URL}/storage/v1/object/sign/${bucket}/${path}`,{
-    method:'POST',headers:{'apikey':CFG.KEY,'Authorization':`Bearer ${S.token||CFG.KEY}`,'Content-Type':'application/json'},
+    method:'POST',
+    headers:{'apikey':CFG.KEY,'Authorization':`Bearer ${S.token||CFG.KEY}`,'Content-Type':'application/json'},
     body:JSON.stringify({expiresIn:3600}),
   });
   if(!res.ok)return null;
-  const d=await res.json();
-  const url=`${CFG.URL}/storage/v1${d.signedURL}`;
-  _signedUrlCache[k]={url,exp:Date.now()+55*60*1000};
+  const data=await res.json();
+  const url=`${CFG.URL}/storage/v1${data.signedURL}`;
+  _signedUrlCache[cacheKey]={url,exp:Date.now()+55*60*1000};
   return url;
 }
-async function uploadGiustificativo(file,movimentoId){
-  const ext=file.name.split('.').pop();
-  const path=`${S.user.id}/${movimentoId}.${ext}`;
-  const res=await fetch(`${CFG.URL}/storage/v1/object/casse-giustificativi/${path}`,{
-    method:'POST',
-    headers:{'apikey':CFG.KEY,'Authorization':`Bearer ${S.token}`,'Content-Type':file.type,'Cache-Control':'3600'},
-    body:file,
-  });
-  if(!res.ok)throw new Error('Errore upload giustificativo');
-  return path;
+async function hydrateSignedImages(root){
+  const imgs=(root||document).querySelectorAll('img[data-sb-bucket]');
+  await Promise.all([...imgs].map(async img=>{
+    const url=await getSignedUrl(img.dataset.sbBucket,img.dataset.sbPath);
+    if(url){img.src=url;img.dataset.signedUrl=url;}
+    else img.replaceWith(Object.assign(document.createElement('div'),{className:'empty-row',textContent:'Immagine non disponibile'}));
+  }));
+}
+async function openSignedImage(bucket,path){
+  const url=await getSignedUrl(bucket,path);
+  if(url)window.open(url,'_blank');
+  else toast('Impossibile generare il link all\'immagine','terr');
 }
 
-// ════════════════
+// ══════════════════════════════════════════
 // AUTH
-// ════════════════
+// ══════════════════════════════════════════
 async function doLogin(){
   const email=$('lem').value.trim(),pwd=$('lpw').value;
   const btn=$('lbtn'),err=$('lerr');
@@ -421,933 +310,669 @@ async function doLogin(){
     S.user=rows[0];
     await loadAll();
     $('lp').classList.add('hid');$('app').classList.remove('hid');
-    renderTopNav();
-    const startPage={operatore:'cassa',responsabile:'sede',admin:'overview',contabilita:'overview'}[S.user.ruolo]||'overview';
-    goPage(startPage);
-    writeLog('login',{});
+    renderTopNav();goPage('dashboard');
+    writeLog('login','Accesso effettuato');
   }catch(e){err.textContent=e.message;err.style.display='block';btn.innerHTML='Accedi';btn.disabled=false;}
 }
 function doLogout(){
   S.user=null;S.token=null;
   $('app').classList.add('hid');$('lp').classList.remove('hid');
-  $('lem').value='';$('lpw').value='';
-  $('lerr').style.display='none';
+  $('lem').value='';$('lpw').value='';$('lbtn').innerHTML='Accedi';$('lbtn').disabled=false;
 }
 
-// ════════════════
-// LOAD DATI
-// ════════════════
+// ══════════════════════════════════════════
+// LOAD
+// ══════════════════════════════════════════
 async function loadAll(){
-  const ruolo=S.user.ruolo;
-  // Sedi
-  S.sedi=await db('GET','sedi_sedi',{ord:'nome.asc',flt:'attiva=eq.true'});
-  // Config
-  const cfgRows=await db('GET',T('config'),{flt:'id=eq.1'});
-  S.config=cfgRows?.[0]||{fondo_default:200};
-  // Profili (admin/resp vedono tutti quelli della sede, operatore solo sé stesso)
-  if(ruolo==='admin'||ruolo==='contabilita'){
-    S.profili=await db('GET',T('profili'),{ord:'cognome.asc,nome.asc'});
-  } else if(ruolo==='responsabile'){
-    S.profili=await db('GET',T('profili'),{flt:`sede_id=eq.${S.user.sede_id}`,ord:'cognome.asc,nome.asc'});
-  } else {
-    S.profili=[S.user];
-  }
-  // Settimana corrente — caricata on demand nelle pagine
-  S.sedeId=S.user.sede_id;
+  const[profili,sedi,sr,raccolte,config]=await Promise.all([
+    db('GET',T('profili'),{ord:'cognome.asc,nome.asc'}),
+    db('GET','sedi_sedi',{ord:'nome.asc'}), // tabella del tool "Gestione Sedi"
+    db('GET',T('sede_referenti')),
+    db('GET',T('raccolte'),{ord:'created_at.desc',lim:'500'}),
+    db('GET',T('config'),{flt:'id=eq.true'}),
+  ]);
+  S.profili=profili||[];S.sedi=sedi||[];S.sedeReferenti=sr||[];S.raccolte=raccolte||[];
+  S.config=config?.[0]||{geo_enabled:true};
 }
-async function loadSettimanaCorrente(){
-  const{anno,settimana}=currentWeekInfo();
-  const sedeId=S.sedeId||S.user.sede_id;
-  if(!sedeId)return null;
-  const rows=await db('GET',T('settimane'),{flt:`sede_id=eq.${sedeId}&anno=eq.${anno}&settimana=eq.${settimana}`});
-  return rows?.[0]||null;
-}
-async function getOrCreateSettimana(){
-  const{anno,settimana,lun}=currentWeekInfo();
-  const sedeId=S.sedeId||S.user.sede_id;
-  const rows=await db('GET',T('settimane'),{flt:`sede_id=eq.${sedeId}&anno=eq.${anno}&settimana=eq.${settimana}`});
-  if(rows?.length)return rows[0];
-  // Crea
-  const lunStr=lun.toISOString().split('T')[0];
-  const created=await db('POST',T('settimane'),{body:[{sede_id:sedeId,anno,settimana,data_lunedi:lunStr}]});
-  return created[0];
-}
-async function loadMovimenti(settimanaId){
-  if(!settimanaId)return[];
-  let flt=`settimana_id=eq.${settimanaId}`;
-  if(S.user.ruolo==='operatore')flt+=`&operatore_id=eq.${S.user.id}`;
-  return await db('GET',T('movimenti'),{flt,ord:'data_movimento.asc,created_at.asc'});
+async function loadLog(){S.log=await db('GET',T('log'),{ord:'created_at.desc',lim:'2000'})||[];}
+function referentiDiSede(sedeId){
+  const ids=S.sedeReferenti.filter(x=>x.sede_id===sedeId).map(x=>x.profilo_id);
+  return S.profili.filter(p=>ids.includes(p.id));
 }
 
-// ════════════════
-// NAV / LOGO
-// ════════════════
-function logoSVG(){
-  return`<svg width="32" height="32" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="#9DBF60"/><path d="M12 20h16M20 12v16" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/></svg>`;
-}
-function logoHTML(){
-  return`<div style="display:flex;align-items:center;gap:10px">${logoSVG()}<span style="font-size:15px;font-weight:800;color:var(--navy);letter-spacing:-.3px">Casse <span style="font-weight:400;color:var(--g500);font-size:13px">— Medical Group</span></span></div>`;
-}
+// ══════════════════════════════════════════
+// LOGO + TOPBAR
+// ══════════════════════════════════════════
+function logoSVG(small){const w=small?28:36,h=small?22:28;return `<svg width="${w}" height="${h}" viewBox="0 0 90 70" fill="none"><circle cx="28" cy="22" r="19" stroke="#D5E3B7" stroke-width="3.5" fill="none"/><circle cx="40" cy="38" r="24" stroke="#77797A" stroke-width="3.5" fill="none"/></svg>`;}
+function logoHTML(small=false){return `<div style="display:flex;align-items:center;gap:${small?6:10}px;">${logoSVG(small)}<div style="line-height:1.15;"><div style="font-weight:300;font-size:${small?11:14}px;letter-spacing:4px;text-transform:uppercase;"><span style="color:var(--grigio)">MEDICAL</span><span style="color:var(--verde)">GROUP</span></div><div style="font-size:9px;letter-spacing:2px;color:var(--grigio-chiaro);text-transform:uppercase;font-weight:500;">Raccolte — Gestione</div></div></div>`;}
+
 function renderTopNav(){
-  $('tb-logo').innerHTML=logoHTML();
-  $('login-logo').innerHTML=`<div style="display:flex;align-items:center;gap:10px;justify-content:center">${logoSVG()}<span style="font-size:18px;font-weight:800;color:var(--navy)">Casse</span></div>`;
-  $('login-ver').textContent=`v${VER}`;
-  $('tb-user').textContent=fullName(S.user);
-  const rl={admin:'Admin',operatore:'Operatore',responsabile:'Responsabile',contabilita:'Contabilità'};
-  $('tb-role').innerHTML=ruoloBadge(S.user.ruolo);
-  const sede=sedeById(S.user.sede_id);
-  $('tb-sede').textContent=sede?sede.nome||sede.indirizzo||'':'';
-
-  const nav=$('tb-nav');nav.innerHTML='';
-  const ruolo=S.user.ruolo;
-
-  // Voci principali
-  NAV_MAIN.filter(n=>n.r.includes(ruolo)).forEach(n=>{
-    const btn=document.createElement('button');
-    btn.className=`tnb${S.page===n.id?' active':''}`;
-    btn.textContent=n.l;btn.onclick=()=>goPage(n.id);
-    nav.appendChild(btn);
-  });
-
-  // Dropdown admin
-  const adminItems=NAV_ADMIN.filter(n=>n.r.includes(ruolo));
+  $('tb-logo').innerHTML=logoHTML(true);
+  $('tb-user').innerHTML=esc(fullName(S.user));
+  const rb={admin:'bg-adm',incaricato:'bg-inc',referente:'bg-ref'};
+  const rl={admin:'Admin',incaricato:'Incaricato',referente:'Referente'};
+  $('tb-role').innerHTML=`<span class="bg ${rb[S.user.ruolo]||'bg-usr'}">${rl[S.user.ruolo]||S.user.ruolo}</span>`;
+  const items=NAV_MAIN.filter(n=>n.r.includes(S.user.ruolo));
+  const adminItems=NAV_ADMIN.filter(n=>n.r.includes(S.user.ruolo));
+  let html=items.map(n=>`<button class="tnb" data-page="${n.id}" onclick="goPage('${n.id}')">${n.l}</button>`).join('');
   if(adminItems.length){
-    const wrap=document.createElement('div');wrap.className='tnb-drop';
-    const btn=document.createElement('button');
-    btn.className=`tnb${adminItems.some(i=>i.id===S.page)?' active':''}`;
-    btn.innerHTML='Gestione ▾';
-    const menu=document.createElement('div');menu.className='tnb-menu hid';
-    adminItems.forEach(n=>{
-      const item=document.createElement('button');
-      item.className=`tnb-item${S.page===n.id?' active':''}`;
-      item.textContent=n.l;item.onclick=()=>{menu.classList.add('hid');goPage(n.id);};
-      menu.appendChild(item);
-    });
-    btn.onclick=(e)=>{e.stopPropagation();menu.classList.toggle('hid');};
-    document.addEventListener('click',()=>menu.classList.add('hid'),{once:true});
-    wrap.appendChild(btn);wrap.appendChild(menu);nav.appendChild(wrap);
+    html+=`<div class="tnb-drop" id="admin-drop">
+      <button class="tnb" id="admin-trigger" onclick="toggleAdminDrop()">Admin ▾</button>
+      <div class="tnb-menu hid" id="admin-menu">
+        ${adminItems.map(n=>`<button class="tnb-item" data-page="${n.id}" onclick="goPage('${n.id}');closeAdminDrop()">${n.l}</button>`).join('')}
+      </div>
+    </div>`;
   }
+  $('tb-nav').innerHTML=html;
+}
+function toggleAdminDrop(){$('admin-menu').classList.toggle('hid');}
+function closeAdminDrop(){$('admin-menu').classList.add('hid');}
+document.addEventListener('click',e=>{
+  const d=$('admin-drop');
+  if(d&&!d.contains(e.target))closeAdminDrop();
+});
+function goPage(pg){
+  S.page=pg;
+  document.querySelectorAll('.tnb,.tnb-item').forEach(b=>b.classList.toggle('active',b.dataset.page===pg));
+  const adminPages=NAV_ADMIN.map(n=>n.id);
+  const trigger=$('admin-trigger');
+  if(trigger)trigger.classList.toggle('active',adminPages.includes(pg));
+  renderPage();
+}
+function renderPage(){
+  const pb=$('pb');
+  if(pg_guard(S.page))return;
+  if(S.page==='dashboard')renderDashboard(pb);
+  else if(S.page==='raccolte')renderRaccolte(pb);
+  else if(S.page==='statistiche')renderStatistiche(pb);
+  else if(S.page==='referenti')renderReferenti(pb);
+  else if(S.page==='utenti')renderUtenti(pb);
+  else if(S.page==='log'){loadLog().then(()=>renderLog(pb));}
+}
+function pg_guard(pg){
+  const item=NAV_MAIN.find(n=>n.id===pg)||NAV_ADMIN.find(n=>n.id===pg);
+  if(item&&!item.r.includes(S.user.ruolo)){$('pb').innerHTML='<div class="empty-row">Accesso non consentito.</div>';return true;}
+  return false;
 }
 
-function goPage(id){
-  S.page=id;renderTopNav();
-  const pb=$('pb');pb.innerHTML='<div style="padding:40px;text-align:center;color:var(--g500)"><span class="spn" style="border-color:rgba(157,191,96,.3);border-top-color:var(--verde);width:20px;height:20px"></span></div>';
-  const pages={
-    cassa:renderCassa,
-    sede:renderSede,
-    overview:renderOverview,
-    conferme:renderConferme,
-    utenti:renderUtenti,
-    log:renderLog,
-    impostazioni:renderImpostazioni,
-  };
-  const fn=pages[id]||renderOverview;
-  fn().catch(e=>{pb.innerHTML=`<div class="alert aw" style="margin:20px">⚠️ ${esc(e.message)}</div>`;});
-}
-
-// ════════════════════════════════════════════════════════
+// ══════════════════════════════════════════
 // MODALE GENERICA
-// ════════════════════════════════════════════════════════
+// ══════════════════════════════════════════
 function openM(title,body,btns=[],wide=false){
   $('mtit').textContent=title;
   $('mbdy').innerHTML=body;
-  const mf=$('mft');mf.innerHTML='';
-  btns.forEach(b=>{
-    const btn=document.createElement('button');
-    btn.className=`btn ${b.cls||'bs'}`;btn.textContent=b.l;
-    btn.onclick=()=>{if(b.fn)b.fn();};mf.appendChild(btn);
-  });
-  const mc=$('mc');
-  mc.classList.toggle('wide',wide);
+  $('mc').classList.toggle('wide',!!wide);
+  $('mft').innerHTML=btns.map((b,i)=>`<button class="btn ${b.c}" id="mb${i}">${b.l}</button>`).join('');
+  btns.forEach((b,i)=>$(`mb${i}`).addEventListener('click',b.a));
   $('mov').classList.remove('hid');
-  $('mcls').onclick=closeM;
-  $('mov').onclick=e=>{if(e.target===$('mov'))closeM();};
 }
 function closeM(){$('mov').classList.add('hid');}
 function openConf(msg,onOk){
-  openM('Conferma',`<div class="alert ai">${esc(msg)}</div>`,[
-    {l:'Annulla',cls:'bs',fn:closeM},
-    {l:'Conferma',cls:'bpg',fn:()=>{closeM();onOk();}},
+  openM('⚠ Conferma',`<p style="color:var(--g700);font-size:13.5px;line-height:1.6">${esc(msg)}</p>`,[
+    {l:'Annulla',c:'bs',a:closeM},
+    {l:'Conferma',c:'bd',a:async()=>{await onOk();closeM();}},
   ]);
 }
+$('mcls').addEventListener('click',closeM);
+$('mov').addEventListener('click',e=>{if(e.target===$('mov'))closeM();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM();});
 
-// ════════════════════════════════════════════════════════
-// CHECK EMAIL (condiviso con manage-user)
-// ════════════════════════════════════════════════════════
-const PWD_WARN_HTML=`<div class="alert ai" style="margin-top:8px;font-size:12px">⚠️ Questo utente esiste già in Supabase. La password non verrà modificata (lascia il campo vuoto).</div>`;
-function onEmailInput(){
-  checkEmailLive($('uf-email'),$('uf-pwd-group'),$('uf-pwd'));
-}
-let _emailTimer=null;
-async function checkEmailLive(emailInput,pwdGroup,pwdInput){
-  clearTimeout(_emailTimer);
-  _emailTimer=setTimeout(async()=>{
-    const email=emailInput.value.trim().toLowerCase();
-    if(!email.includes('@'))return;
-    const r=await callFn('servizi-manage-user',{action:'check_email',email});
-    if(r.exists){
-      pwdInput.value='';pwdInput.disabled=true;pwdGroup.style.display='block';
-      const w=pwdGroup.querySelector('.pwd-warn');
-      if(!w)pwdGroup.insertAdjacentHTML('beforeend',PWD_WARN_HTML.replace('class="alert','class="pwd-warn alert'));
-    } else {
-      pwdInput.disabled=false;pwdGroup.style.display='block';
-      const w=pwdGroup.querySelector('.pwd-warn');if(w)w.remove();
-    }
-  },500);
-}
+// ══════════════════════════════════════════
+// DASHBOARD
+// ══════════════════════════════════════════
+function statoLbl(st){return{in_corso:'In corso',ritirata:'Ritirata',versata:'Versata',annullata:'Annullata'}[st]||st;}
+function statoBadge(st){const m={in_corso:'bg-amber',ritirata:'bg-ref',versata:'bg-on',annullata:'bg-off'};return `<span class="bg ${m[st]||'bg-off'}">${statoLbl(st)}</span>`;}
 
-// ════════════════════════════════════════════════════════
-// PAGINA — LA MIA CASSA (operatore)
-// ════════════════════════════════════════════════════════
-async function renderCassa(){
-  const pb=$('pb');
-  const sett=await loadSettimanaCorrente();
-  const settimanaId=sett?.id;
-  const movimenti=settimanaId?await loadMovimenti(settimanaId):[];
-  const {anno,settimana}=currentWeekInfo();
-  const isOpen=!sett||sett.stato==='aperta'||sett.stato==='sbloccata';
-
-  // Calcoli
-  const fondo=Number(S.user.fondo_cassa)||Number(S.config.fondo_default)||0;
-  let incassiC=0,incassiA=0,usciteNDC=0,usciteVarie=0;
-  movimenti.forEach(m=>{
-    if(m.tipo==='incasso_contante')incassiC+=Number(m.importo);
-    else if(m.tipo==='incasso_assegno')incassiA+=Number(m.importo);
-    else if(m.tipo==='uscita_ndc')usciteNDC+=Number(m.importo);
-    else if(m.tipo==='uscita_varie')usciteVarie+=Number(m.importo);
-  });
-  const saldo=fondo+incassiC-usciteNDC-usciteVarie;
-  const totConsegnare=saldo-fondo; // contante netto da consegnare (al netto del fondo fisso)
-
-  // Filtro tipo
-  const tipoFiltri=['','incasso_contante','incasso_assegno','uscita_ndc','uscita_varie'];
-  const movFiltrati=S.movFiltroTipo?movimenti.filter(m=>m.tipo===S.movFiltroTipo):movimenti;
+function renderDashboard(pb){
+  const r=S.raccolte;
+  const inCorso=r.filter(x=>['in_corso','ritirata'].includes(x.stato));
+  const chiuse=r.filter(x=>x.stato==='versata');
+  const conDelta=r.filter(x=>x.delta!=null&&Number(x.delta)!==0);
+  const totaleMese=r.filter(x=>{const d=new Date(x.created_at);const n=new Date();return d.getMonth()===n.getMonth()&&d.getFullYear()===n.getFullYear();}).reduce((s,x)=>s+Number(x.importo_dichiarato||0),0);
 
   pb.innerHTML=`
-  <div class="page-hdr">
-    <h1>La mia cassa</h1>
-    <div style="display:flex;align-items:center;gap:10px">
-      <div class="week-nav">
-        <button onclick="changeWeek(-1)">◀ Prec.</button>
-        <span class="week-label" id="wklbl">${weekLabel()}</span>
-        <button onclick="changeWeek(1)" ${S.weekOffset>=0?'disabled style="opacity:.4"':''}>Succ. ▶</button>
-      </div>
-      ${isOpen?`<button class="btn bpg" onclick="openMovimentoForm()">+ Movimento</button>`:''}
+    <div class="page-hdr"><h1>Dashboard raccolte</h1></div>
+    <div class="stats-row">
+      <div class="stat-card"><div class="stat-val">${r.length}</div><div class="stat-label">Raccolte totali</div></div>
+      <div class="stat-card"><div class="stat-val amber">${inCorso.length}</div><div class="stat-label">Da completare</div></div>
+      <div class="stat-card"><div class="stat-val green">${chiuse.length}</div><div class="stat-label">Versate</div></div>
+      <div class="stat-card"><div class="stat-val ${conDelta.length?'red':''}">${conDelta.length}</div><div class="stat-label">Con delta</div></div>
+      <div class="stat-card" style="cursor:pointer" onclick="goPage('statistiche')" title="Vai alle statistiche"><div class="stat-val">${eur(totaleMese)}</div><div class="stat-label">Raccolto questo mese 📊</div></div>
     </div>
-  </div>
 
-  ${sett&&sett.stato==='chiusa'?`<div class="alert aw" style="margin-bottom:16px">🔒 Settimana chiusa. Nessuna modifica possibile.</div>`:''}
-  ${sett&&sett.stato==='sbloccata'?`<div class="alert aa" style="margin-bottom:16px">🔓 Settimana riaperta dall'amministratore.</div>`:''}
+    ${conDelta.length?`
+    <h2 style="font-size:14px;font-weight:700;color:var(--red);margin-bottom:10px">⚠ Raccolte con delta da verificare</h2>
+    <table class="dt" style="margin-bottom:28px"><thead><tr><th>Sede</th><th>Incaricato</th><th>Dichiarato</th><th>Versato</th><th>Delta</th><th>Data</th></tr></thead><tbody>
+      ${conDelta.map(x=>`<tr class="row-delta" style="cursor:pointer" onclick="openRaccoltaDetail('${x.id}')">
+        <td>${esc(sedeById(x.sede_id)?.nome||'—')}</td><td>${esc(fullName(profById(x.incaricato_id)))}</td>
+        <td>${eur(x.importo_dichiarato)}</td><td>${eur(x.importo_versato)}</td>
+        <td style="font-weight:800;color:var(--red)">${eur(x.delta)}</td><td>${fmt(x.created_at)}</td>
+      </tr>`).join('')}
+    </tbody></table>`:''}
 
-  <div class="stats-row">
-    <div class="stat-card"><div class="stat-val">${eur(fondo)}</div><div class="stat-label">Fondo fisso</div></div>
-    <div class="stat-card"><div class="stat-val green">${eur(incassiC)}</div><div class="stat-label">Incassi contante</div></div>
-    <div class="stat-card"><div class="stat-val green">${eur(incassiA)}</div><div class="stat-label">Incassi assegni</div></div>
-    <div class="stat-card"><div class="stat-val red">${eur(usciteNDC+usciteVarie)}</div><div class="stat-label">Uscite totali</div></div>
-    <div class="stat-card"><div class="stat-val ${totConsegnare<0?'red':''}">${eur(saldo)}</div><div class="stat-label">Saldo cassa (incl. fondo)</div></div>
-    <div class="stat-card" style="border-color:var(--verde);background:var(--blue-xlight)"><div class="stat-val">${eur(totConsegnare)}</div><div class="stat-label">Da consegnare (senza fondo)</div></div>
-  </div>
-
-  <div class="card">
-    <div class="card-head">
-      <span class="card-title">Movimenti settimana</span>
-      <div class="filters" style="margin:0">
-        <span class="filter-chip ${S.movFiltroTipo===''?'active':''}" onclick="setMovFiltro('')">Tutti</span>
-        ${Object.entries(TIPI).map(([k,v])=>`<span class="filter-chip ${S.movFiltroTipo===k?'active':''}" onclick="setMovFiltro('${k}')">${v.l}</span>`).join('')}
-      </div>
-    </div>
-    <div class="card-body" style="padding:0">
-      <table class="dt">
-        <thead><tr><th>Data</th><th>Tipo</th><th>Importo</th><th>Descrizione</th><th>Giustificativo</th>${isOpen?'<th></th>':''}</tr></thead>
-        <tbody id="mov-tbody">${movimentiRows(movFiltrati,isOpen)}</tbody>
-      </table>
-      ${movFiltrati.length===0?`<div class="empty-row">Nessun movimento per questa settimana.</div>`:''}
-    </div>
-  </div>`;
+    <h2 style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:10px">Ultime raccolte</h2>
+    <table class="dt"><thead><tr><th>Sede</th><th>Incaricato</th><th>Referente</th><th>Importo</th><th>Stato</th><th>Data</th></tr></thead><tbody>
+      ${r.slice(0,10).map(x=>`<tr style="cursor:pointer" onclick="openRaccoltaDetail('${x.id}')">
+        <td>${esc(sedeById(x.sede_id)?.nome||'—')}</td><td>${esc(fullName(profById(x.incaricato_id)))}</td>
+        <td>${esc(fullName(profById(x.referente_id)))}</td><td>${eur(x.importo_dichiarato)}</td>
+        <td>${statoBadge(x.stato)}</td><td>${fmt(x.created_at)}</td>
+      </tr>`).join('')||'<tr><td colspan="6" class="empty-row">Nessuna raccolta</td></tr>'}
+    </tbody></table>
+  `;
 }
 
-function movimentiRows(movimenti,isOpen){
-  if(!movimenti.length)return'';
-  return movimenti.map(m=>{
-    const rowClass=m.tipo==='uscita_ndc'?'row-uscita-ndc':m.tipo.startsWith('uscita')?'row-uscita':'';
-    const segno=tipoSign(m.tipo);
-    const importoHTML=`<span style="font-weight:700;color:${segno>0?'#1A7A40':'var(--red)'}">${segno>0?'+':'−'}${eur(Math.abs(m.importo))}</span>`;
-    const gjBtn=m.giustificativo_path
-      ?`<button class="btn bs" style="padding:4px 9px;font-size:11px" onclick="viewGiustificativo('${esc(m.giustificativo_path)}')">📎 Vedi</button>`
-      :'—';
-    const editDel=isOpen&&m.operatore_id===S.user.id
-      ?`<div style="display:flex;gap:6px">
-          <button class="bic" title="Modifica" onclick="openMovimentoForm(${JSON.stringify(JSON.stringify(m))})">✏️</button>
-          <button class="bic" title="Elimina" onclick="eliminaMovimento('${m.id}')">🗑️</button>
-        </div>`:'';
-    return`<tr class="${rowClass}">
-      <td>${fmt(m.data_movimento)}</td>
-      <td>${tipoBadge(m.tipo)}</td>
-      <td>${importoHTML}</td>
-      <td style="max-width:220px;font-size:12px">${esc(m.descrizione||'—')}</td>
-      <td>${gjBtn}</td>
-      ${isOpen?`<td>${editDel}</td>`:''}
+// ══════════════════════════════════════════
+// RACCOLTE — elenco filtrabile + dettaglio
+// ══════════════════════════════════════════
+function renderRaccolte(pb){
+  const f=S.raccolteFiltro;
+  pb.innerHTML=`
+    <div class="page-hdr"><h1>Raccolte</h1>
+      <div class="search-wrap"><input id="rac-search" placeholder="Cerca sede o persona..." value="${esc(f.search)}" oninput="onRacSearch(this.value)"></div>
+    </div>
+    <div class="filters">
+      ${['','in_corso','ritirata','versata','annullata'].map(s=>`<button class="filter-chip ${f.stato===s?'active':''}" onclick="setRacFiltro('${s}')">${s===''?'Tutte':statoLbl(s)}</button>`).join('')}
+    </div>
+    <table class="dt"><thead><tr><th>Sede</th><th>Incaricato</th><th>Referente</th><th>Importo</th><th>Versato</th><th>Delta</th><th>Stato</th><th>Data</th><th></th></tr></thead>
+    <tbody id="rac-tbody"></tbody></table>
+  `;
+  renderRacRows();
+}
+function setRacFiltro(s){S.raccolteFiltro.stato=s;renderRaccolte($('pb'));}
+function onRacSearch(v){S.raccolteFiltro.search=v;renderRacRows();}
+function renderRacRows(){
+  const f=S.raccolteFiltro;
+  let list=S.raccolte.slice();
+  if(f.stato)list=list.filter(x=>x.stato===f.stato);
+  if(f.search){
+    const q=f.search.toLowerCase();
+    list=list.filter(x=>{
+      const sede=sedeById(x.sede_id)?.nome||'';
+      const inc=fullName(profById(x.incaricato_id));
+      const ref=fullName(profById(x.referente_id));
+      return `${sede} ${inc} ${ref}`.toLowerCase().includes(q);
+    });
+  }
+  $('rac-tbody').innerHTML=list.map(x=>{
+    const hasDelta=x.delta!=null&&Number(x.delta)!==0;
+    const rowClass=x.stato==='annullata'?'row-annullata':(hasDelta?'row-delta':'');
+    return `<tr class="${rowClass}" style="cursor:pointer" onclick="openRaccoltaDetail('${x.id}')">
+      <td>${esc(sedeById(x.sede_id)?.nome||'—')}</td>
+      <td>${esc(fullName(profById(x.incaricato_id)))}</td>
+      <td>${esc(fullName(profById(x.referente_id)))}</td>
+      <td>${eur(x.importo_dichiarato)}</td>
+      <td>${eur(x.importo_versato)}</td>
+      <td style="${hasDelta?'font-weight:800;color:var(--red)':''}">${x.delta!=null?eur(x.delta):'—'}</td>
+      <td>${statoBadge(x.stato)}</td>
+      <td>${fmt(x.created_at)}</td>
+      <td><button class="bic" onclick="event.stopPropagation();openRaccoltaDetail('${x.id}')">👁</button></td>
     </tr>`;
-  }).join('');
+  }).join('')||'<tr><td colspan="9" class="empty-row">Nessuna raccolta trovata</td></tr>';
 }
 
-function setMovFiltro(tipo){S.movFiltroTipo=tipo;renderCassa();}
-function changeWeek(delta){S.weekOffset+=delta;if(S.weekOffset>0)S.weekOffset=0;renderCassa();}
-
-async function viewGiustificativo(path){
-  const url=await getSignedUrl('casse-giustificativi',path);
-  if(url)window.open(url,'_blank');
-  else toast('Impossibile aprire il file','terr');
-}
-
-function openMovimentoForm(jsonStr=null){
-  const m=jsonStr?JSON.parse(jsonStr):null;
-  const tipoOpts=Object.entries(TIPI).map(([k,v])=>`<option value="${k}" ${m?.tipo===k?'selected':''}>${v.l}</option>`).join('');
-  const needsDesc=m&&(m.tipo==='uscita_ndc'||m.tipo==='uscita_varie');
-  const today=new Date().toISOString().split('T')[0];
-
-  openM(m?'Modifica movimento':'Nuovo movimento',`
-    <div class="fr" style="margin-bottom:0">
-      <div class="fg">
-        <label class="fl">Tipo *</label>
-        <select class="fse" id="mf-tipo" onchange="onTipoChange()" required>
-          <option value="">— seleziona —</option>
-          ${tipoOpts}
-        </select>
-      </div>
-      <div class="fg">
-        <label class="fl">Data *</label>
-        <input type="date" class="fi" id="mf-data" value="${m?.data_movimento||today}" required>
-      </div>
+function openRaccoltaDetail(id){
+  const r=S.raccolte.find(x=>x.id===id);if(!r)return;
+  const sede=sedeById(r.sede_id),inc=profById(r.incaricato_id),ref=profById(r.referente_id);
+  const hasDelta=r.delta!=null&&Number(r.delta)!==0;
+  const body=`
+    <div class="fr" style="margin-bottom:4px">
+      <div class="fg"><div class="fl">Sede</div><div style="font-size:14px;font-weight:700;color:var(--navy)">${esc(sede?.nome||'—')}</div></div>
+      <div class="fg"><div class="fl">Stato</div><div>${statoBadge(r.stato)}</div></div>
     </div>
-    <div class="fg" style="margin-top:14px">
-      <label class="fl">Importo (€) *</label>
-      <input type="number" class="fi" id="mf-importo" value="${m?.importo||''}" min="0.01" step="0.01" placeholder="0,00" required>
+    <div class="fr">
+      <div class="fg"><div class="fl">Incaricato</div><div>${esc(fullName(inc))}</div></div>
+      <div class="fg"><div class="fl">Referente</div><div>${esc(fullName(ref))}</div></div>
     </div>
-    <div class="fg" id="mf-desc-group" style="${needsDesc?'':'display:none'}">
-      <label class="fl">Descrizione / causale *</label>
-      <textarea class="fta" id="mf-desc">${esc(m?.descrizione||'')}</textarea>
+    <div class="fr">
+      <div class="fg"><div class="fl">Importo dichiarato</div><div style="font-size:16px;font-weight:800">${eur(r.importo_dichiarato)}</div></div>
+      <div class="fg"><div class="fl">Importo versato</div><div style="font-size:16px;font-weight:800">${eur(r.importo_versato)}</div></div>
     </div>
-    <div class="fg" id="mf-file-group">
-      <label class="fl">Giustificativo</label>
-      <input type="file" id="mf-file" accept="image/*,.pdf" style="font-size:13px">
-      ${m?.giustificativo_path?`<div class="file-preview">📎 File esistente — <a href="#" onclick="viewGiustificativo('${esc(m.giustificativo_path)}');return false">Visualizza</a></div>`:''}
+    ${r.delta!=null?`<div class="alert ${hasDelta?'aw':'ai'}" style="margin-bottom:14px">${hasDelta?`⚠ <b>Delta riscontrato: ${eur(r.delta)}</b> — l'importo versato non coincide con quello dichiarato in sede.`:'✓ Nessun delta: importo versato coincidente.'}</div>`:''}
+
+    <div class="fl" style="margin-bottom:8px">Firme</div>
+    <div class="fr" style="margin-bottom:14px">
+      ${r.firma_referente_url?`<div><img data-sb-bucket="servizi-firme" data-sb-path="${esc(r.firma_referente_url)}" style="width:100%;border:1px solid var(--g200);border-radius:8px;background:#fff"><div style="font-size:11.5px;color:var(--g500);margin-top:4px">Referente · ${r.conf_referente_at?fmtDT(r.conf_referente_at):'—'} ${geoLink(r.firma_referente_lat,r.firma_referente_lng)}</div></div>`:'<div></div>'}
+      ${r.firma_incaricato_url?`<div><img data-sb-bucket="servizi-firme" data-sb-path="${esc(r.firma_incaricato_url)}" style="width:100%;border:1px solid var(--g200);border-radius:8px;background:#fff"><div style="font-size:11.5px;color:var(--g500);margin-top:4px">Incaricato · ${r.conf_incaricato_at?fmtDT(r.conf_incaricato_at):'—'} ${geoLink(r.firma_incaricato_lat,r.firma_incaricato_lng)}</div></div>`:'<div></div>'}
     </div>
-    <div id="mf-err" class="alert aw hid" style="margin-top:8px"></div>
-  `,[
-    {l:'Annulla',cls:'bs',fn:closeM},
-    {l:m?'Salva modifiche':'Aggiungi',cls:'bpg',fn:()=>salvaMovimento(m?.id||null)},
-  ]);
-}
 
-function onTipoChange(){
-  const tipo=$('mf-tipo').value;
-  const needsDesc=tipo==='uscita_ndc'||tipo==='uscita_varie';
-  $('mf-desc-group').style.display=needsDesc?'':'none';
-}
+    <div class="fg"><div class="fl">Raccolta ritirata</div><div>${r.chiusura_at?fmtDT(r.chiusura_at):'—'} ${geoLink(r.chiusura_lat,r.chiusura_lng)}</div></div>
 
-async function salvaMovimento(existingId){
-  const tipo=$('mf-tipo').value;
-  const data=$('mf-data').value;
-  const importo=parseFloat($('mf-importo').value);
-  const desc=$('mf-desc').value.trim();
-  const fileEl=$('mf-file');
-  const errEl=$('mf-err');
-  errEl.classList.add('hid');
+    <div class="fl" style="margin-bottom:8px;margin-top:14px">Versamento</div>
+    <div class="fg"><div>${r.versato_at?fmtDT(r.versato_at):'—'} ${geoLink(r.versato_lat,r.versato_lng)}</div></div>
+    ${r.ricevuta_url?`<div class="fg"><img data-sb-bucket="servizi-ricevute" data-sb-path="${esc(r.ricevuta_url)}" class="thumb" style="width:100%;max-width:320px;height:auto;cursor:pointer" onclick="openSignedImage('servizi-ricevute','${esc(r.ricevuta_url)}')"></div>`:''}
 
-  if(!tipo){errEl.textContent='Seleziona il tipo.';errEl.classList.remove('hid');return;}
-  if(!data){errEl.textContent='Inserisci la data.';errEl.classList.remove('hid');return;}
-  if(isNaN(importo)||importo<=0){errEl.textContent='Importo non valido.';errEl.classList.remove('hid');return;}
-  if((tipo==='uscita_ndc'||tipo==='uscita_varie')&&!desc){errEl.textContent='Inserisci la descrizione/causale.';errEl.classList.remove('hid');return;}
-
-  const btns=$('mft').querySelectorAll('button');btns.forEach(b=>b.disabled=true);
-
-  try{
-    let settimana=await getOrCreateSettimana();
-    if(!settimana||!['aperta','sbloccata'].includes(settimana.stato)){
-      throw new Error('La settimana non è aperta. Impossibile inserire movimenti.');
-    }
-
-    let gjPath=null;
-    if(fileEl.files[0]){
-      const tmpId=existingId||crypto.randomUUID();
-      gjPath=await uploadGiustificativo(fileEl.files[0],tmpId);
-    }
-
-    const body={
-      settimana_id:settimana.id,
-      operatore_id:S.user.id,
-      sede_id:S.user.sede_id,
-      tipo,importo,
-      data_movimento:data,
-      descrizione:desc||null,
-    };
-    if(gjPath)body.giustificativo_path=gjPath;
-
-    if(existingId){
-      await db('PATCH',T('movimenti'),{flt:`id=eq.${existingId}`,body});
-      writeLog('movimento_modificato',{id:existingId,tipo,importo});
-    } else {
-      await db('POST',T('movimenti'),{body:[body]});
-      writeLog('movimento_aggiunto',{tipo,importo});
-    }
-    closeM();toast(existingId?'Movimento aggiornato':'Movimento aggiunto');
-    await renderCassa();
-  }catch(e){
-    errEl.textContent=e.message;errEl.classList.remove('hid');
-    btns.forEach(b=>b.disabled=false);
+    <div class="fg"><div class="fl">Note</div><textarea class="fta" id="rac-note" placeholder="Nessuna nota">${esc(r.note||'')}</textarea></div>
+  `;
+  const btns=[
+    {l:'Chiudi',c:'bs',a:closeM},
+    {l:'Salva note',c:'bpg',a:async()=>{
+      try{
+        const note=$('rac-note').value.trim();
+        await db('PATCH',T('raccolte'),{flt:`id=eq.${r.id}`,body:{note:note||null}});
+        r.note=note;
+        S.raccolte=S.raccolte.map(x=>x.id===r.id?{...x,note}:x);
+        toast('Note salvate ✓');closeM();
+      }catch(e){toast(e.message,'terr');}
+    }},
+  ];
+  if(S.user.ruolo==='admin'&&r.stato!=='annullata'){
+    btns.unshift({l:'Annulla raccolta',c:'bd',a:()=>{
+      openConf("Annullare questa raccolta? L'operazione non elimina i dati ma la marca come annullata.",async()=>{
+        await db('PATCH',T('raccolte'),{flt:`id=eq.${r.id}`,body:{stato:'annullata'}});
+        await writeLog('raccolta_annullata',`Sede ${sede?.nome} · ${eur(r.importo_dichiarato)}`);
+        S.raccolte=await db('GET',T('raccolte'),{ord:'created_at.desc',lim:'500'})||[];
+        closeM();renderPage();toast('Raccolta annullata');
+      });
+    }});
   }
+  const dt=new Date(r.created_at);
+  const dataStr=dt.toLocaleDateString('it-IT',{day:'2-digit',month:'2-digit',year:'numeric'});
+  const oraStr=dt.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'});
+  openM(`${esc(sede?.nome||'')}: raccolta creata il ${dataStr} alle ${oraStr}`,body,btns,true);
+  hydrateSignedImages($('mbdy'));
 }
 
-async function eliminaMovimento(id){
-  openConf('Eliminare questo movimento?',async()=>{
-    try{
-      await db('DELETE',T('movimenti'),{flt:`id=eq.${id}`});
-      writeLog('movimento_eliminato',{id});
-      toast('Movimento eliminato');await renderCassa();
-    }catch(e){toast(e.message,'terr');}
-  });
+// ══════════════════════════════════════════
+// SEDI & REFERENTI — sola lettura sedi (gestite dal tool Sedi),
+// gestione associazione referente per sede
+// ══════════════════════════════════════════
+function renderReferenti(pb){
+  pb.innerHTML=`
+    <div class="page-hdr"><h1>Sedi & referenti</h1></div>
+    <div class="alert ai" style="margin-bottom:18px">ℹ Le sedi sono gestite nel tool <b>Gestione Sedi</b>. Qui si associano i referenti (utenti di questo tool, ruolo <b>referente</b>) che potranno firmare le raccolte per ciascuna sede.</div>
+    <table class="dt"><thead><tr><th>Sede</th><th>Indirizzo</th><th>Referenti associati</th><th></th></tr></thead><tbody>
+      ${S.sedi.map(s=>{
+        const refs=referentiDiSede(s.id);
+        return `<tr>
+          <td>${esc(s.nome)} ${s.attiva===false?'<span class="bg bg-off">Inattiva</span>':''}</td>
+          <td>${esc(s.indirizzo||'—')}</td>
+          <td>${refs.length?refs.map(r=>`<span class="bg bg-ref" style="margin-right:4px">${esc(fullName(r))}</span>`).join(''):'<span class="bg bg-off">Nessuno</span>'}</td>
+          <td><button class="btn bs" onclick="openReferentiModal('${s.id}')">Gestisci</button></td>
+        </tr>`;
+      }).join('')||'<tr><td colspan="4" class="empty-row">Nessuna sede trovata. Verifica il tool Gestione Sedi.</td></tr>'}
+    </tbody></table>
+  `;
 }
-
-// ════════════════════════════════════════════════════════
-// PAGINA — SEDE (responsabile)
-// ════════════════════════════════════════════════════════
-async function renderSede(){
-  const pb=$('pb');
-  const sedeId=S.user.sede_id;
+function openReferentiModal(sedeId){
   const sede=sedeById(sedeId);
-  const sett=await loadSettimanaCorrente();
-  const movimenti=sett?await db('GET',T('movimenti'),{flt:`settimana_id=eq.${sett.id}`,ord:'data_movimento.asc,created_at.asc'}):[];
-
-  // Raggruppamento per operatore
-  const operatoriSede=S.profili.filter(p=>p.sede_id===sedeId&&p.ruolo==='operatore'&&p.attivo);
-  const byOp={};
-  movimenti.forEach(m=>{
-    if(!byOp[m.operatore_id])byOp[m.operatore_id]={incC:0,incA:0,uscNDC:0,uscVarie:0,movs:[]};
-    const b=byOp[m.operatore_id];
-    if(m.tipo==='incasso_contante')b.incC+=Number(m.importo);
-    else if(m.tipo==='incasso_assegno')b.incA+=Number(m.importo);
-    else if(m.tipo==='uscita_ndc')b.uscNDC+=Number(m.importo);
-    else if(m.tipo==='uscita_varie')b.uscVarie+=Number(m.importo);
-    b.movs.push(m);
-  });
-
-  // Totali sede
-  let totFondo=0,totIncC=0,totIncA=0,totUscNDC=0,totUscVarie=0;
-  operatoriSede.forEach(op=>{
-    totFondo+=Number(op.fondo_cassa)||Number(S.config.fondo_default)||0;
-    const b=byOp[op.id]||{};
-    totIncC+=b.incC||0;totIncA+=b.incA||0;totUscNDC+=b.uscNDC||0;totUscVarie+=b.uscVarie||0;
-  });
-  const totSaldo=totFondo+totIncC-totUscNDC-totUscVarie;
-  const totConsegnare=totIncC-totUscNDC-totUscVarie;
-
-  pb.innerHTML=`
-  <div class="page-hdr">
-    <h1>Sede — ${esc(sede?.nome||sede?.indirizzo||'')}</h1>
-    <div class="week-nav">
-      <button onclick="changeWeekSede(-1)">◀ Prec.</button>
-      <span class="week-label">${weekLabel()}</span>
-      <button onclick="changeWeekSede(1)" ${S.weekOffset>=0?'disabled style="opacity:.4"':''}>Succ. ▶</button>
+  const referentiDisponibili=S.profili.filter(p=>p.ruolo==='referente'&&p.attivo!==false);
+  const assocIds=new Set(S.sedeReferenti.filter(x=>x.sede_id===sedeId).map(x=>x.profilo_id));
+  const body=`
+    <div class="fg"><div class="fl">Sede</div><div style="font-weight:700;color:var(--navy)">${esc(sede?.nome||'—')}</div></div>
+    <div class="fg"><div class="fl">Referenti disponibili</div></div>
+    <div id="ref-list">
+      ${referentiDisponibili.map(p=>`
+        <label class="tw" style="margin-bottom:10px;justify-content:space-between">
+          <span>${esc(fullName(p))} <span style="color:var(--g500);font-size:12px">(${esc(p.email)})</span></span>
+          <div class="tg"><input type="checkbox" data-pid="${p.id}" ${assocIds.has(p.id)?'checked':''}><span class="tsl"></span></div>
+        </label>`).join('')||'<div class="empty-row">Nessun utente con ruolo "referente". Creane uno dalla pagina Utenti.</div>'}
     </div>
-  </div>
-
-  <div class="riepilogo-sede">
-    <h3>🏢 Riepilogo sede — ${weekLabel()}</h3>
-    <div class="rs-grid">
-      <div class="rs-item"><div class="rs-val">${eur(totFondo)}</div><div class="rs-lbl">Fondi fissi totali</div></div>
-      <div class="rs-item"><div class="rs-val" style="color:#1A7A40">${eur(totIncC)}</div><div class="rs-lbl">Incassi contante</div></div>
-      <div class="rs-item"><div class="rs-val" style="color:#1A7A40">${eur(totIncA)}</div><div class="rs-lbl">Incassi assegni</div></div>
-      <div class="rs-item"><div class="rs-val" style="color:var(--red)">${eur(totUscNDC+totUscVarie)}</div><div class="rs-lbl">Uscite totali</div></div>
-      <div class="rs-item"><div class="rs-val">${eur(totSaldo)}</div><div class="rs-lbl">Saldo (incl. fondi)</div></div>
-      <div class="rs-item" style="border-color:var(--verde);background:var(--blue-xlight)"><div class="rs-val" style="color:var(--navy)">${eur(totConsegnare)}</div><div class="rs-lbl">📦 Stima da ritirare</div></div>
-    </div>
-    ${sett?`<div style="margin-top:10px;font-size:12px;color:var(--g500)">Stato settimana: ${statoBadge(sett.stato)}</div>`:`<div style="margin-top:10px;font-size:12px;color:var(--g500)">Settimana non ancora avviata.</div>`}
-  </div>
-
-  <h2 style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px;text-transform:uppercase;letter-spacing:.4px">Casse operatori</h2>
-  <div class="op-grid">
-    ${operatoriSede.map(op=>{
-      const b=byOp[op.id]||{incC:0,incA:0,uscNDC:0,uscVarie:0};
-      const fondo=Number(op.fondo_cassa)||Number(S.config.fondo_default)||0;
-      const saldo=fondo+b.incC-b.uscNDC-b.uscVarie;
-      const daConsegnare=b.incC-b.uscNDC-b.uscVarie;
-      return`<div class="op-card">
-        <div class="op-card-head">
-          <span class="op-card-name">${esc(fullName(op))}</span>
-          <span class="bg bg-usr" style="font-size:10px">${eur(fondo)} fondo</span>
-        </div>
-        <div class="op-card-body">
-          <div class="op-stat"><span class="op-stat-label">Incassi contante</span><span class="op-stat-val pos">${eur(b.incC)}</span></div>
-          <div class="op-stat"><span class="op-stat-label">Incassi assegni</span><span class="op-stat-val pos">${eur(b.incA)}</span></div>
-          <div class="op-stat"><span class="op-stat-label">Uscite NDC</span><span class="op-stat-val neg">${eur(b.uscNDC)}</span></div>
-          <div class="op-stat"><span class="op-stat-label">Uscite varie</span><span class="op-stat-val neg">${eur(b.uscVarie)}</span></div>
-          <div class="op-stat"><span class="op-stat-label">Saldo cassa</span><span class="op-stat-val total">${eur(saldo)}</span></div>
-          <div class="op-stat" style="border-top:1.5px solid var(--verde);padding-top:8px">
-            <span class="op-stat-label" style="color:var(--navy);font-weight:700">Da consegnare</span>
-            <span class="op-stat-val total" style="color:var(--navy)">${eur(daConsegnare)}</span>
-          </div>
-          <div style="margin-top:10px">
-            <button class="btn bs" style="width:100%;font-size:12px" onclick="openDettaglioOperatore('${op.id}')">Dettaglio movimenti</button>
-          </div>
-        </div>
-      </div>`;
-    }).join('')}
-    ${operatoriSede.length===0?'<div class="empty-row">Nessun operatore attivo per questa sede.</div>':''}
-  </div>`;
+  `;
+  openM('Referenti di sede',body,[
+    {l:'Annulla',c:'bs',a:closeM},
+    {l:'Salva',c:'bpg',a:async()=>{
+      const checks=[...document.querySelectorAll('#ref-list input[type=checkbox]')];
+      const selected=checks.filter(c=>c.checked).map(c=>c.dataset.pid);
+      const toAdd=selected.filter(id=>!assocIds.has(id));
+      const toRemove=[...assocIds].filter(id=>!selected.includes(id));
+      try{
+        if(toAdd.length)await db('POST',T('sede_referenti'),{body:toAdd.map(profilo_id=>({sede_id:sedeId,profilo_id}))});
+        for(const profilo_id of toRemove)await db('DELETE',T('sede_referenti'),{flt:`sede_id=eq.${sedeId}&profilo_id=eq.${profilo_id}`});
+        S.sedeReferenti=await db('GET',T('sede_referenti'))||[];
+        await writeLog('referenti_aggiornati',`Sede ${sede?.nome}`);
+        closeM();renderPage();toast('Referenti aggiornati ✓');
+      }catch(e){toast(e.message,'terr');}
+    }},
+  ],true);
 }
 
-function changeWeekSede(d){S.weekOffset+=d;if(S.weekOffset>0)S.weekOffset=0;renderSede();}
-
-async function openDettaglioOperatore(opId){
-  const sett=await loadSettimanaCorrente();
-  const movs=sett?await db('GET',T('movimenti'),{flt:`settimana_id=eq.${sett.id}&operatore_id=eq.${opId}`,ord:'data_movimento.asc,created_at.asc'}):[];
-  const op=profById(opId);
-  openM(`Movimenti — ${fullName(op)}`,`
-    <table class="dt">
-      <thead><tr><th>Data</th><th>Tipo</th><th>Importo</th><th>Descrizione</th><th>Giu.</th></tr></thead>
-      <tbody>${movimentiRows(movs,false)}</tbody>
-    </table>
-    ${movs.length===0?'<div class="empty-row">Nessun movimento.</div>':''}
-  `,[{l:'Chiudi',cls:'bs',fn:closeM}],true);
+// ══════════════════════════════════════════
+// CHECK EMAIL LIVE (pattern standard Medical Group)
+// ══════════════════════════════════════════
+async function checkEmailLive(inputEl,infoEl,pwdWrap,fnName){
+  const email=inputEl.value.trim();
+  if(infoEl){infoEl.style.display='none';infoEl.dataset.exists='';}
+  if(!email||!email.includes('@')||!email.includes('.'))return;
+  if(!infoEl)return;
+  infoEl.style.cssText='display:block;margin-top:6px;padding:6px 10px;border-radius:var(--rsm);background:var(--g50);border:1px solid var(--g200);font-size:12px;color:var(--g500)';
+  infoEl.textContent='Verifica in corso…';
+  try{
+    const res=await fetch(`${CFG.FN}/${fnName}`,{method:'POST',
+      headers:{'Authorization':`Bearer ${S.token}`,'Content-Type':'application/json'},
+      body:JSON.stringify({action:'check_email',email})});
+    const data=await res.json();
+    if(!data.ok){
+      infoEl.style.cssText='display:block;margin-top:6px;padding:6px 10px;border-radius:var(--rsm);background:var(--red-light);border:1px solid var(--red);font-size:12px;color:var(--red)';
+      infoEl.textContent='Errore verifica: '+(data.error||'risposta non valida');
+      return;
+    }
+    infoEl.dataset.exists=data.exists?'true':'false';
+    if(data.exists){
+      infoEl.style.cssText='display:block;margin-top:6px;padding:8px 12px;border-radius:var(--rsm);background:#EEF5E3;border:1px solid var(--verde);font-size:12px;color:#2e6e1a;font-weight:600';
+      infoEl.textContent='✓ Utente già presente — la password rimane la stessa impostata per gli altri tool';
+      const wrap=pwdWrap||document.getElementById('um-pwd-wrap');
+      if(wrap){wrap.style.display='none';const p=wrap.querySelector('input[type=password]');if(p){p.value='';p.disabled=true;}}
+    }else{
+      infoEl.style.cssText='display:block;margin-top:6px;padding:8px 12px;border-radius:var(--rsm);background:var(--g50);border:1px solid var(--g200);font-size:12px;color:var(--g500)';
+      infoEl.textContent='Nuovo utente — inserisci una password per creare l\'account';
+      const wrap=pwdWrap||document.getElementById('um-pwd-wrap');
+      if(wrap){wrap.style.display='';const p=wrap.querySelector('input[type=password]');if(p)p.disabled=false;}
+    }
+  }catch(e){
+    infoEl.style.cssText='display:block;margin-top:6px;padding:6px 10px;border-radius:var(--rsm);background:var(--red-light);border:1px solid var(--red);font-size:12px;color:var(--red)';
+    infoEl.textContent='Errore di rete: '+e.message;
+  }
 }
+const PWD_WARN_HTML='<div style="margin-top:6px;padding:8px 12px;border-radius:var(--rsm);background:#FEF0E3;border:1px solid #f5c28a;font-size:12px;color:#7a3800;font-weight:600">⚠ Attenzione: questa password sarà valida per tutti i tool che usano lo stesso account.</div>';
 
-// ════════════════════════════════════════════════════════
-// PAGINA — OVERVIEW (admin / contabilità)
-// ════════════════════════════════════════════════════════
-async function renderOverview(){
-  const pb=$('pb');
-
-  // Sede selector per admin
-  const sediAttive=S.sedi.filter(s=>s.attiva!==false);
-  if(!S.sedeId&&sediAttive.length)S.sedeId=sediAttive[0].id;
-
-  const sett=await loadSettimanaCorrente();
-  const movimenti=sett?await db('GET',T('movimenti'),{flt:`settimana_id=eq.${sett.id}`,ord:'data_movimento.asc,created_at.asc'}):[];
-  const operatoriSede=S.profili.filter(p=>p.sede_id===S.sedeId&&p.ruolo==='operatore');
-
-  let totIncC=0,totIncA=0,totUscNDC=0,totUscVarie=0,totFondo=0;
-  const byOp={};
-  movimenti.forEach(m=>{
-    if(!byOp[m.operatore_id])byOp[m.operatore_id]={incC:0,incA:0,uscNDC:0,uscVarie:0};
-    const b=byOp[m.operatore_id];
-    if(m.tipo==='incasso_contante'){b.incC+=Number(m.importo);totIncC+=Number(m.importo);}
-    else if(m.tipo==='incasso_assegno'){b.incA+=Number(m.importo);totIncA+=Number(m.importo);}
-    else if(m.tipo==='uscita_ndc'){b.uscNDC+=Number(m.importo);totUscNDC+=Number(m.importo);}
-    else if(m.tipo==='uscita_varie'){b.uscVarie+=Number(m.importo);totUscVarie+=Number(m.importo);}
-  });
-  operatoriSede.forEach(op=>{totFondo+=Number(op.fondo_cassa)||Number(S.config.fondo_default)||0;});
-  const totSaldo=totFondo+totIncC-totUscNDC-totUscVarie;
-
-  const sedeOpts=sediAttive.map(s=>`<option value="${s.id}" ${s.id===S.sedeId?'selected':''}>${esc(s.nome||s.indirizzo||s.id)}</option>`).join('');
-
+// ══════════════════════════════════════════
+// UTENTI — gestione servizi_profili
+// ══════════════════════════════════════════
+const RBADGE={admin:['bg-adm','Admin'],incaricato:['bg-inc','Incaricato'],referente:['bg-ref','Referente']};
+function renderUtenti(pb){
   pb.innerHTML=`
-  <div class="page-hdr">
-    <h1>Overview casse</h1>
-    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-      <div class="week-nav">
-        <button onclick="changeWeekOv(-1)">◀ Prec.</button>
-        <span class="week-label">${weekLabel()}</span>
-        <button onclick="changeWeekOv(1)" ${S.weekOffset>=0?'disabled style="opacity:.4"':''}>Succ. ▶</button>
-      </div>
-      <select class="fse" style="width:auto;min-width:160px" onchange="S.sedeId=this.value;renderOverview()">
-        ${sedeOpts}
+    <div class="page-hdr"><h1>Utenti</h1><button class="btn bpg" onclick="openUtenteModal(null)">+ Nuovo utente</button></div>
+    <div style="background:#fff;border:1px solid var(--g200);border-radius:var(--r);padding:14px 18px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between">
+      <div><div style="font-weight:700;font-size:13.5px;color:var(--navy)">Geolocalizzazione eventi</div>
+      <div style="font-size:12px;color:var(--g500);margin-top:2px">Se attiva, il telefono registra le coordinate di ogni firma, chiusura raccolta e versamento (previo consenso del singolo utente)</div></div>
+      <label class="tw"><div class="tg"><input type="checkbox" id="geo-toggle" ${S.config?.geo_enabled!==false?'checked':''} onchange="toggleGeoConfig(this.checked)"><span class="tsl"></span></div></label>
+    </div>
+    <table class="dt"><thead><tr><th>Nome</th><th>Email</th><th>Ruolo</th><th>Stato</th><th>Geolocalizzazione</th><th></th></tr></thead><tbody>
+      ${S.profili.map(u=>{const[rc,rl]=RBADGE[u.ruolo]||['bg-usr',u.ruolo];
+        const geo=u.geo_consenso===false
+          ?`<span class="bg bg-red">⚠ Negata</span> <button class="btn bs" style="padding:3px 8px;font-size:11px" onclick="resetGeoConsenso('${u.id}')">Resetta</button>`
+          :u.geo_consenso===true?'<span class="bg bg-on">● Concessa</span>'
+          :'<span class="bg bg-off">— Non richiesta</span>';
+        return `<tr>
+        <td>${esc(fullName(u))}</td><td>${esc(u.email)}</td>
+        <td><span class="bg ${rc}">${rl}</span></td>
+        <td><span class="bg ${u.attivo!==false?'bg-on':'bg-off'}">${u.attivo!==false?'● Attivo':'○ Inattivo'}</span></td>
+        <td>${geo}</td>
+        <td><button class="btn bs" onclick="openUtenteModal('${u.id}')">Modifica</button></td>
+      </tr>`;}).join('')||'<tr><td colspan="6" class="empty-row">Nessun utente</td></tr>'}
+    </tbody></table>
+  `;
+}
+async function toggleGeoConfig(enabled){
+  try{
+    await db('PATCH',T('config'),{flt:'id=eq.true',body:{geo_enabled:enabled}});
+    S.config={...(S.config||{}),geo_enabled:enabled};
+    toast(enabled?'Geolocalizzazione attivata ✓':'Geolocalizzazione disattivata ✓');
+  }catch(e){toast(e.message,'terr');$('geo-toggle').checked=!enabled;}
+}
+async function resetGeoConsenso(userId){
+  try{
+    await db('PATCH',T('profili'),{flt:`id=eq.${userId}`,body:{geo_consenso:null}});
+    S.profili=S.profili.map(p=>p.id===userId?{...p,geo_consenso:null}:p);
+    renderPage();
+    toast('Consenso resettato — verrà richiesto di nuovo al prossimo evento ✓');
+  }catch(e){toast(e.message,'terr');}
+}
+function openUtenteModal(uid_val){
+  const u=uid_val?S.profili.find(p=>p.id===uid_val):null;
+  const isNew=!u;
+  const body=`
+    <div class="fr">
+      <div class="fg"><div class="fl">Nome *</div><input class="fi" id="um-nome" value="${esc(u?.nome||'')}"></div>
+      <div class="fg"><div class="fl">Cognome *</div><input class="fi" id="um-cognome" value="${esc(u?.cognome||'')}"></div>
+    </div>
+    <div class="fg"><div class="fl">E-Mail *</div>
+      <input class="fi" id="um-email" type="email" value="${esc(u?.email||'')}" ${isNew?'placeholder="nome@medicalgroup.it"':'readonly style="background:var(--g50);color:var(--g500);cursor:not-allowed"'}>
+      ${isNew?'<div id="um-email-info" style="display:none"></div>':''}
+    </div>
+    ${isNew?`<div id="um-pwd-wrap"><div class="fg"><div class="fl">Password *</div><input class="fi" id="um-pwd" type="password" placeholder="Minimo 6 caratteri"></div></div>`:''}
+    <div class="fg"><div class="fl">Ruolo</div>
+      <select class="fse" id="um-ruolo">
+        <option value="referente" ${u?.ruolo==='referente'?'selected':''}>Referente (firma raccolte in sede)</option>
+        <option value="incaricato" ${u?.ruolo==='incaricato'?'selected':''}>Incaricato (effettua i ritiri)</option>
+        <option value="admin" ${u?.ruolo==='admin'?'selected':''}>Admin (accesso completo)</option>
       </select>
-      ${sett?`<div>${statoBadge(sett.stato)}</div>`:''}
-      ${sett&&S.user.ruolo==='admin'?
-        (sett.stato==='chiusa'
-          ?`<button class="btn bamb" onclick="sblocca('${sett.id}')">🔓 Riapri</button>`
-          :`<button class="btn bd" onclick="chiudiSettimana('${sett.id}')">🔒 Chiudi sett.</button>`)
-        :''}
     </div>
-  </div>
+    <div class="fg"><label class="tw">
+      <div class="tg"><input type="checkbox" id="um-attivo" ${u?.attivo!==false?'checked':''}><span class="tsl"></span></div>
+      <span class="fl" style="margin:0">Utente attivo</span>
+    </label></div>
+    ${!isNew?`<div class="fg"><div class="fl">Nuova password <span style="font-weight:400;font-size:11px;color:var(--g500)">(lascia vuoto per non modificare)</span></div>
+      <input class="fi" id="um-newpwd" type="password" placeholder="Minimo 6 caratteri">
+      <div id="um-pwd-warn" style="display:none">${PWD_WARN_HTML}</div></div>`:''}
+  `;
+  const btns=[
+    {l:'Annulla',c:'bs',a:closeM},
+    {l:isNew?'Crea utente':'Salva',c:'bpg',a:()=>saveUtente(isNew,u)},
+  ];
+  if(!isNew&&u.id!==S.user.id){
+    btns.unshift({l:'Elimina profilo',c:'bd',a:()=>{
+      openConf(`Eliminare il profilo di ${fullName(u)}? L'account di accesso resterà attivo per altri eventuali tool, ma non potrà più usare "Raccolte".`,async()=>{
+        await db('DELETE',T('profili'),{flt:`id=eq.${u.id}`});
+        S.profili=S.profili.filter(p=>p.id!==u.id);
+        closeM();renderPage();toast('Profilo eliminato');
+      });
+    }});
+  }
+  openM(isNew?'+ Nuovo utente':'✎ Modifica utente',body,btns);
 
-  <div class="stats-row">
-    <div class="stat-card"><div class="stat-val">${eur(totFondo)}</div><div class="stat-label">Fondi totali</div></div>
-    <div class="stat-card"><div class="stat-val green">${eur(totIncC)}</div><div class="stat-label">Incassi contante</div></div>
-    <div class="stat-card"><div class="stat-val green">${eur(totIncA)}</div><div class="stat-label">Incassi assegni</div></div>
-    <div class="stat-card"><div class="stat-val red">${eur(totUscNDC+totUscVarie)}</div><div class="stat-label">Uscite totali</div></div>
-    <div class="stat-card"><div class="stat-val">${eur(totSaldo)}</div><div class="stat-label">Saldo sede</div></div>
-    <div class="stat-card" style="border-color:var(--verde);background:var(--blue-xlight)">
-      <div class="stat-val">${eur(totIncC-totUscNDC-totUscVarie)}</div>
-      <div class="stat-label">📦 Stima ritiro</div>
-    </div>
-  </div>
-
-  <div class="op-grid">
-    ${operatoriSede.map(op=>{
-      const b=byOp[op.id]||{incC:0,incA:0,uscNDC:0,uscVarie:0};
-      const fondo=Number(op.fondo_cassa)||Number(S.config.fondo_default)||0;
-      const saldo=fondo+b.incC-b.uscNDC-b.uscVarie;
-      return`<div class="op-card">
-        <div class="op-card-head">
-          <span class="op-card-name">${esc(fullName(op))}</span>
-          <span class="bg bg-usr" style="font-size:10px">${eur(fondo)} fondo</span>
-        </div>
-        <div class="op-card-body">
-          <div class="op-stat"><span class="op-stat-label">Incassi contante</span><span class="op-stat-val pos">${eur(b.incC)}</span></div>
-          <div class="op-stat"><span class="op-stat-label">Incassi assegni</span><span class="op-stat-val pos">${eur(b.incA)}</span></div>
-          <div class="op-stat"><span class="op-stat-label">Uscite NDC</span><span class="op-stat-val neg">${eur(b.uscNDC)}</span></div>
-          <div class="op-stat"><span class="op-stat-label">Uscite varie</span><span class="op-stat-val neg">${eur(b.uscVarie)}</span></div>
-          <div class="op-stat"><span class="op-stat-label">Saldo cassa</span><span class="op-stat-val total">${eur(saldo)}</span></div>
-          <div class="op-stat" style="border-top:1.5px solid var(--verde);padding-top:8px">
-            <span class="op-stat-label" style="color:var(--navy);font-weight:700">Da consegnare</span>
-            <span class="op-stat-val total">${eur(b.incC-b.uscNDC-b.uscVarie)}</span>
-          </div>
-          <div style="margin-top:10px">
-            <button class="btn bs" style="width:100%;font-size:12px" onclick="openDettaglioOperatore('${op.id}')">Dettaglio movimenti</button>
-          </div>
-        </div>
-      </div>`;
-    }).join('')}
-    ${operatoriSede.length===0?`<div style="grid-column:1/-1"><div class="empty-row">Nessun operatore per questa sede.</div></div>`:''}
-  </div>`;
-}
-
-function changeWeekOv(d){S.weekOffset+=d;if(S.weekOffset>0)S.weekOffset=0;renderOverview();}
-
-async function chiudiSettimana(id){
-  openConf('Chiudere manualmente la settimana? Gli operatori non potranno più inserire movimenti.',async()=>{
-    try{
-      await db('PATCH',T('settimane'),{flt:`id=eq.${id}`,body:{stato:'chiusa',chiusa_at:new Date().toISOString()}});
-      writeLog('settimana_chiusa',{settimana_id:id});
-      toast('Settimana chiusa');await renderOverview();
-    }catch(e){toast(e.message,'terr');}
-  });
-}
-async function sblocca(id){
-  openConf('Riaprire questa settimana? Gli operatori potranno di nuovo inserire movimenti.',async()=>{
-    try{
-      await db('PATCH',T('settimane'),{flt:`id=eq.${id}`,body:{stato:'sbloccata',chiusa_at:null}});
-      writeLog('settimana_sbloccata',{settimana_id:id});
-      toast('Settimana riaperta');await renderOverview();
-    }catch(e){toast(e.message,'terr');}
-  });
-}
-
-// ════════════════════════════════════════════════════════
-// PAGINA — CONFERME CONTABILITÀ
-// ════════════════════════════════════════════════════════
-async function renderConferme(){
-  const pb=$('pb');
-  // Lista settimane chiuse con o senza conferma
-  const flt=S.user.ruolo==='contabilita'?'stato=eq.chiusa':'';
-  const settimane=await db('GET',T('settimane'),{flt:flt||undefined,ord:'anno.desc,settimana.desc',lim:'50'});
-  const conferme=settimane.length?await db('GET',T('conferme'),{flt:`settimana_id=in.(${settimane.map(s=>`"${s.id}"`).join(',')})`,ord:'created_at.desc'}):[];
-  const confMap={};conferme.forEach(c=>{confMap[c.settimana_id]=c;});
-
-  pb.innerHTML=`
-  <div class="page-hdr">
-    <h1>Conferme contabilità</h1>
-  </div>
-  <div class="card">
-    <div class="card-body" style="padding:0">
-      <table class="dt">
-        <thead><tr><th>Sede</th><th>Settimana</th><th>Periodo</th><th>Stato</th><th>Imp. gestionale</th><th>Imp. consegnato</th><th>Delta</th><th></th></tr></thead>
-        <tbody>
-          ${settimane.map(s=>{
-            const c=confMap[s.id];
-            const lun=fmt(s.data_lunedi);
-            const dom=s.data_lunedi?fmt(new Date(new Date(s.data_lunedi+'T00:00:00').getTime()+6*86400000)):'-';
-            const deltaVal=c?Number(c.delta):null;
-            const deltaClass=deltaVal==null?'':deltaVal<0?'red':deltaVal>0?'amber':'green';
-            return`<tr>
-              <td>${esc(sedeLabel(s.sede_id))}</td>
-              <td>Sett. ${s.settimana} / ${s.anno}</td>
-              <td style="font-size:12px">${lun} → ${dom}</td>
-              <td>${statoBadge(s.stato)}</td>
-              <td>${c?eur(c.importo_gestionale):'—'}</td>
-              <td>${c?eur(c.importo_consegnato):'—'}</td>
-              <td><span class="stat-val ${deltaClass}" style="font-size:14px">${c&&deltaVal!=null?eurSign(deltaVal):'—'}</span></td>
-              <td>
-                ${s.stato==='chiusa'||s.stato==='sbloccata'
-                  ?`<button class="btn ${c?'bs':'bpg'}" style="font-size:12px" onclick="openConfermaForm('${s.id}','${s.sede_id}',${c?JSON.stringify(JSON.stringify(c)):'null'})">${c?'✏️ Modifica':'✅ Conferma'}</button>`
-                  :''}
-              </td>
-            </tr>`;
-          }).join('')}
-          ${settimane.length===0?`<tr><td colspan="8" class="empty-row">Nessuna settimana trovata.</td></tr>`:''}
-        </tbody>
-      </table>
-    </div>
-  </div>`;
-}
-
-function openConfermaForm(settimanaId,sedeId,cJsonStr){
-  const c=cJsonStr?JSON.parse(cJsonStr):null;
-  openM(c?'Modifica conferma':'Conferma contabilità',`
-    <div class="alert ai" style="margin-bottom:16px">Inserisci gli importi da gestionale e il contante effettivamente consegnato per questa settimana.</div>
-    <div class="fr">
-      <div class="fg">
-        <label class="fl">Importo gestionale (€)</label>
-        <input type="number" class="fi" id="cf-gest" value="${c?.importo_gestionale||''}" step="0.01" placeholder="0,00">
-      </div>
-      <div class="fg">
-        <label class="fl">Importo consegnato (€)</label>
-        <input type="number" class="fi" id="cf-cons" value="${c?.importo_consegnato||''}" step="0.01" placeholder="0,00">
-      </div>
-    </div>
-    <div class="fg">
-      <label class="fl">Note</label>
-      <textarea class="fta" id="cf-note">${esc(c?.note||'')}</textarea>
-    </div>
-    <div id="cf-err" class="alert aw hid" style="margin-top:8px"></div>
-  `,[
-    {l:'Annulla',cls:'bs',fn:closeM},
-    {l:'Salva conferma',cls:'bpg',fn:()=>salvaConferma(settimanaId,c?.id||null)},
-  ]);
-}
-
-async function salvaConferma(settimanaId,existingId){
-  const gest=parseFloat($('cf-gest').value);
-  const cons=parseFloat($('cf-cons').value);
-  const note=$('cf-note').value.trim();
-  const errEl=$('cf-err');errEl.classList.add('hid');
-  if(isNaN(gest)||isNaN(cons)){errEl.textContent='Inserisci entrambi gli importi.';errEl.classList.remove('hid');return;}
-  try{
-    const body={settimana_id:settimanaId,contabilita_id:S.user.id,importo_gestionale:gest,importo_consegnato:cons,note:note||null,confermato_at:new Date().toISOString()};
-    if(existingId){
-      await db('PATCH',T('conferme'),{flt:`id=eq.${existingId}`,body});
-    } else {
-      await db('POST',T('conferme'),{body:[body]});
-    }
-    writeLog('conferma_contabilita',{settimana_id:settimanaId,delta:cons-gest});
-    closeM();toast('Conferma salvata');await renderConferme();
-  }catch(e){
-    $('cf-err').textContent=e.message;$('cf-err').classList.remove('hid');
+  if(isNew){
+    const emailEl=document.getElementById('um-email');
+    const infoEl=document.getElementById('um-email-info');
+    const pwdWrap=document.getElementById('um-pwd-wrap');
+    let debTimer=null;
+    const doCheck=()=>checkEmailLive(emailEl,infoEl,pwdWrap,'servizi-manage-user');
+    emailEl.addEventListener('blur',doCheck);
+    emailEl.addEventListener('input',()=>{
+      clearTimeout(debTimer);
+      if(infoEl){infoEl.style.display='none';infoEl.dataset.exists='';}
+      if(emailEl.value.includes('@')&&emailEl.value.includes('.')){
+        debTimer=setTimeout(doCheck,600);
+      }
+    });
+  }
+  if(!isNew){
+    const pwdEl=document.getElementById('um-newpwd');
+    const warnEl=document.getElementById('um-pwd-warn');
+    if(pwdEl&&warnEl)pwdEl.addEventListener('input',()=>{warnEl.style.display=pwdEl.value.length>0?'':'none';});
   }
 }
-
-// ════════════════════════════════════════════════════════
-// PAGINA — UTENTI (admin)
-// ════════════════════════════════════════════════════════
-async function renderUtenti(){
-  const pb=$('pb');
-  const profili=await db('GET',T('profili'),{ord:'cognome.asc,nome.asc'});
-  S.profili=profili;
-
-  pb.innerHTML=`
-  <div class="page-hdr">
-    <h1>Utenti</h1>
-    <button class="btn bpg" onclick="openUtenteForm(null)">+ Nuovo utente</button>
-  </div>
-  <div class="card">
-    <div class="card-body" style="padding:0">
-      <table class="dt">
-        <thead><tr><th>Nome</th><th>Email</th><th>Ruolo</th><th>Sede</th><th>Fondo cassa</th><th>Stato</th><th></th></tr></thead>
-        <tbody>
-          ${profili.map(p=>`<tr class="${p.attivo===false?'row-annullata':''}">
-            <td><strong>${esc(fullName(p))}</strong></td>
-            <td style="font-size:12px">${esc(p.email)}</td>
-            <td>${ruoloBadge(p.ruolo)}</td>
-            <td>${esc(sedeLabel(p.sede_id))}</td>
-            <td style="font-weight:700">${eur(p.fondo_cassa)}</td>
-            <td><span class="bg ${p.attivo===false?'bg-off':'bg-on'}">${p.attivo===false?'Inattivo':'Attivo'}</span></td>
-            <td>
-              <div style="display:flex;gap:6px">
-                <button class="bic" title="Modifica" onclick="openUtenteForm(${JSON.stringify(JSON.stringify(p))})">✏️</button>
-                ${p.id!==S.user.id?`<button class="bic" title="Elimina profilo" onclick="eliminaUtente('${p.id}','${esc(fullName(p))}')">🗑️</button>`:''}
-              </div>
-            </td>
-          </tr>`).join('')}
-          ${profili.length===0?`<tr><td colspan="7" class="empty-row">Nessun utente.</td></tr>`:''}
-        </tbody>
-      </table>
-    </div>
-  </div>`;
-}
-
-function openUtenteForm(jsonStr){
-  const p=jsonStr?JSON.parse(jsonStr):null;
-  const sedeOpts=S.sedi.map(s=>`<option value="${s.id}" ${p?.sede_id===s.id?'selected':''}>${esc(s.nome||s.indirizzo||s.id)}</option>`).join('');
-  openM(p?'Modifica utente':'Nuovo utente',`
-    <div class="fr">
-      <div class="fg"><label class="fl">Nome *</label><input type="text" class="fi" id="uf-nome" value="${esc(p?.nome||'')}" required></div>
-      <div class="fg"><label class="fl">Cognome *</label><input type="text" class="fi" id="uf-cognome" value="${esc(p?.cognome||'')}" required></div>
-    </div>
-    <div class="fg" id="uf-email-group">
-      <label class="fl">Email *</label>
-      <input type="email" class="fi" id="uf-email" value="${esc(p?.email||'')}" ${p?'disabled':''} ${p?'':'oninput="onEmailInput()"'} required>
-    </div>
-    <div class="fg" id="uf-pwd-group" style="${p?'':'display:none'}">
-      <label class="fl">Password ${p?'(lascia vuoto per non modificare)':'*'}</label>
-      <input type="password" class="fi" id="uf-pwd" placeholder="••••••••" autocomplete="new-password">
-    </div>
-    <div class="fr">
-      <div class="fg">
-        <label class="fl">Ruolo *</label>
-        <select class="fse" id="uf-ruolo">
-          ${['admin','operatore','responsabile','contabilita'].map(r=>`<option value="${r}" ${p?.ruolo===r?'selected':''}>${{admin:'Admin',operatore:'Operatore',responsabile:'Responsabile',contabilita:'Contabilità'}[r]}</option>`).join('')}
-        </select>
-      </div>
-      <div class="fg">
-        <label class="fl">Sede</label>
-        <select class="fse" id="uf-sede"><option value="">— nessuna —</option>${sedeOpts}</select>
-      </div>
-    </div>
-    <div class="fr">
-      <div class="fg">
-        <label class="fl">Fondo cassa (€)</label>
-        <input type="number" class="fi" id="uf-fondo" value="${p?.fondo_cassa!=null?p.fondo_cassa:S.config.fondo_default||200}" step="0.01" min="0">
-      </div>
-      <div class="fg" style="justify-content:flex-end;align-items:flex-end">
-        <label class="tw"><div class="tg"><input type="checkbox" id="uf-attivo" ${p===null||p?.attivo!==false?'checked':''}><span class="tsl"></span></div><span style="font-size:13px;font-weight:600">Utente attivo</span></label>
-      </div>
-    </div>
-    <div id="uf-err" class="alert aw hid" style="margin-top:8px"></div>
-  `,[
-    {l:'Annulla',cls:'bs',fn:closeM},
-    {l:p?'Salva':'Crea utente',cls:'bpg',fn:()=>salvaUtente(p?.id||null)},
-  ],false);
-  // Mostra campo password per nuovo utente
-  if(!p)$('uf-pwd-group').style.display='block';
-}
-
-async function salvaUtente(existingId){
-  const nome=$('uf-nome').value.trim();
-  const cognome=$('uf-cognome').value.trim();
-  const email=$('uf-email').value.trim().toLowerCase();
-  const pwd=$('uf-pwd').value;
-  const ruolo=$('uf-ruolo').value;
-  const sede=$('uf-sede').value||null;
-  const fondo=parseFloat($('uf-fondo').value)||0;
-  const attivo=$('uf-attivo').checked;
-  const errEl=$('uf-err');errEl.classList.add('hid');
-  if(!nome||!cognome){errEl.textContent='Nome e cognome obbligatori.';errEl.classList.remove('hid');return;}
-
+async function saveUtente(isNew,u){
+  const nome=$('um-nome').value.trim(),cognome=$('um-cognome').value.trim();
+  const email=$('um-email').value.trim(),ruolo=$('um-ruolo').value,attivo=$('um-attivo').checked;
+  if(!nome||!cognome||!email){toast('Compila tutti i campi obbligatori.','terr');return;}
   try{
-    if(existingId){
-      // Update via edge function (gestisce password)
-      const r=await callFn('servizi-manage-user',{action:'update',user_id:existingId,password:pwd||undefined,nome,cognome,ruolo,attivo});
-      if(!r.ok)throw new Error(r.error||'Errore aggiornamento');
-      // Aggiorna sede e fondo_cassa direttamente
-      await db('PATCH',T('profili'),{flt:`id=eq.${existingId}`,body:{sede_id:sede,fondo_cassa:fondo}});
-    } else {
-      if(!email){errEl.textContent='Email obbligatoria.';errEl.classList.remove('hid');return;}
-      const r=await callFn('servizi-manage-user',{action:'create',email,password:pwd,nome,cognome,ruolo,attivo});
-      if(!r.ok)throw new Error(r.error||'Errore creazione');
-      // Aggiorna sede e fondo_cassa
-      await db('PATCH',T('profili'),{flt:`id=eq.${r.user_id}`,body:{sede_id:sede,fondo_cassa:fondo}});
+    if(isNew){
+      const emailInfo=$('um-email-info');
+      const exists=emailInfo?.dataset.exists==='true';
+      const pwd=$('um-pwd')?.value||'';
+      if(!exists&&pwd.length<6){toast('Password minimo 6 caratteri.','terr');return;}
+      const payload={action:'create',email,nome,cognome,ruolo,attivo:true};
+      if(!exists)payload.password=pwd;
+      const res=await callFn('servizi-manage-user',payload);
+      if(!res.ok)throw new Error(res.error||'Errore creazione utente');
+      S.profili.push({id:res.user_id,nome,cognome,email,ruolo,attivo:true});
+      closeM();renderPage();toast(res.auth_created?'Utente creato ✓':'Profilo collegato ✓');
+    }else{
+      const newpwd=$('um-newpwd')?.value||'';
+      if(newpwd&&newpwd.length<6){toast('Password minimo 6 caratteri.','terr');return;}
+      const payload={action:'update',user_id:u.id,nome,cognome,ruolo,attivo};
+      if(newpwd)payload.password=newpwd;
+      const res=await callFn('servizi-manage-user',payload);
+      if(!res.ok)throw new Error(res.error||'Errore aggiornamento');
+      S.profili=S.profili.map(x=>x.id===u.id?{...x,nome,cognome,ruolo,attivo}:x);
+      closeM();renderPage();toast('Utente aggiornato ✓');
     }
-    writeLog(existingId?'utente_modificato':'utente_creato',{email,ruolo});
-    closeM();toast(existingId?'Utente aggiornato':'Utente creato');
-    await renderUtenti();
-  }catch(e){
-    errEl.textContent=e.message;errEl.classList.remove('hid');
-  }
-}
-
-async function eliminaUtente(id,nome){
-  openConf(`Eliminare il profilo di ${nome}? L'utente non potrà più accedere a questo tool.`,async()=>{
-    try{
-      const r=await callFn('servizi-manage-user',{action:'delete_profile',user_id:id});
-      if(!r.ok)throw new Error(r.error||'Errore eliminazione');
-      writeLog('utente_eliminato',{user_id:id,nome});
-      toast('Profilo eliminato');await renderUtenti();
-    }catch(e){toast(e.message,'terr');}
-  });
-}
-
-// ════════════════════════════════════════════════════════
-// PAGINA — LOG
-// ════════════════════════════════════════════════════════
-const LOG_PER_PAGE=50;
-async function renderLog(){
-  const pb=$('pb');
-  const offset=S.logPage*LOG_PER_PAGE;
-  let flt=S.logSrch?`azione=ilike.*${encodeURIComponent(S.logSrch)}*`:'';
-  const{data:logs,tot}=await db('GET',T('log'),{flt,ord:'created_at.desc',lim:`${offset},${LOG_PER_PAGE}`,cnt:true});
-  const totalPages=Math.ceil(tot/LOG_PER_PAGE)||1;
-
-  pb.innerHTML=`
-  <div class="page-hdr">
-    <h1>Log attività</h1>
-    <div class="search-wrap">
-      <input type="text" placeholder="Cerca azione…" value="${esc(S.logSrch)}" oninput="S.logSrch=this.value;S.logPage=0;renderLog()">
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-body" style="padding:0">
-      <table class="dt">
-        <thead><tr><th>Data/ora</th><th>Utente</th><th>Azione</th><th>Dettagli</th></tr></thead>
-        <tbody>
-          ${logs.map(l=>{
-            const p=profById(l.utente_id);
-            return`<tr>
-              <td style="white-space:nowrap;font-size:12px">${fmtDT(l.created_at)}</td>
-              <td style="font-size:12px">${esc(p?fullName(p):l.utente_id||'—')}</td>
-              <td><span class="bg bg-usr">${esc(l.azione)}</span></td>
-              <td style="font-size:11px;color:var(--g500)">${l.dettagli?esc(JSON.stringify(l.dettagli)).substring(0,120):'—'}</td>
-            </tr>`;
-          }).join('')}
-          ${logs.length===0?`<tr><td colspan="4" class="empty-row">Nessun log trovato.</td></tr>`:''}
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <div class="pag">
-    <span class="pag-info">Pagina ${S.logPage+1} di ${totalPages} — ${tot} righe</span>
-    ${Array.from({length:totalPages},(_, i)=>`<button class="${i===S.logPage?'active':''}" onclick="S.logPage=${i};renderLog()">${i+1}</button>`).join('')}
-  </div>`;
-}
-
-// ════════════════════════════════════════════════════════
-// PAGINA — IMPOSTAZIONI (admin)
-// ════════════════════════════════════════════════════════
-async function renderImpostazioni(){
-  const pb=$('pb');
-  const cfg=S.config;
-  const sediAttive=S.sedi.filter(s=>s.attiva!==false);
-
-  pb.innerHTML=`
-  <div class="page-hdr"><h1>Impostazioni</h1></div>
-
-  <div class="card" style="max-width:520px">
-    <div class="card-head"><span class="card-title">Configurazione globale</span></div>
-    <div class="card-body">
-      <div class="fg">
-        <label class="fl">Fondo cassa predefinito (€)</label>
-        <input type="number" class="fi" id="cfg-fondo" value="${cfg.fondo_default||200}" step="0.01" min="0">
-        <div style="font-size:11px;color:var(--g500);margin-top:4px">Applicato agli operatori che non hanno un fondo personalizzato.</div>
-      </div>
-      <div class="fg">
-        <label class="tw">
-          <div class="tg"><input type="checkbox" id="cfg-geo" ${cfg.geo_enabled!==false?'checked':''}><span class="tsl"></span></div>
-          <div>
-            <div style="font-size:13px;font-weight:600">Geolocalizzazione abilitata</div>
-            <div style="font-size:11px;color:var(--g500)">Se disabilitato, la posizione GPS non viene mai richiesta.</div>
-          </div>
-        </label>
-      </div>
-      <button class="btn bpg" onclick="salvaConfig()">Salva impostazioni</button>
-    </div>
-  </div>
-
-  <div class="card" style="max-width:520px;margin-top:16px">
-    <div class="card-head"><span class="card-title">Chiusura settimane</span></div>
-    <div class="card-body">
-      <div class="alert ai" style="margin-bottom:14px">La chiusura automatica avviene ogni domenica. Da qui puoi forzare la chiusura o sbloccare manualmente una settimana. Usa la pagina <strong>Overview</strong> per gestire le singole settimane per sede.</div>
-      <div style="font-size:13px;color:var(--g500)">Seleziona una sede dall'Overview per agire sulla settimana corrente.</div>
-    </div>
-  </div>`;
-}
-
-async function salvaConfig(){
-  const fondo=parseFloat($('cfg-fondo').value)||200;
-  const geo=$('cfg-geo').checked;
-  try{
-    await db('PATCH',T('config'),{flt:'id=eq.1',body:{fondo_default:fondo,geo_enabled:geo}});
-    S.config={...S.config,fondo_default:fondo,geo_enabled:geo};
-    writeLog('config_aggiornata',{fondo_default:fondo,geo_enabled:geo});
-    toast('Impostazioni salvate');
   }catch(e){toast(e.message,'terr');}
 }
 
-// ════════════════════════════════════════════════════════
+// ══════════════════════════════════════════
+// LOG (solo admin)
+// ══════════════════════════════════════════
+// ══════════════════════════════════════════
+// STATISTICHE — grafico mensile multi-linea
+// ══════════════════════════════════════════
+S.statsFiltro={sede:'',serie:{dichiarato:true,versato:true,delta:false}};
+let _chartInstance=null;
+
+function renderStatistiche(pb){
+  pb.innerHTML=`
+    <div class="page-hdr"><h1>Statistiche</h1></div>
+    <div class="filters" style="flex-wrap:wrap;gap:14px;margin-bottom:18px;align-items:flex-start">
+      <div>
+        <div class="fl" style="margin-bottom:6px">Sede</div>
+        <select class="fse" id="stats-sede" style="width:220px" onchange="onStatsFiltroChange()">
+          <option value="">Tutte le sedi (totale)</option>
+          ${S.sedi.map(s=>`<option value="${s.id}" ${S.statsFiltro.sede===s.id?'selected':''}>${esc(s.nome)}</option>`).join('')}
+        </select>
+      </div>
+      <div>
+        <div class="fl" style="margin-bottom:6px">Importi da mostrare</div>
+        <div style="display:flex;gap:16px">
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer">
+            <input type="checkbox" id="stats-dichiarato" ${S.statsFiltro.serie.dichiarato?'checked':''} onchange="onStatsFiltroChange()"> Dichiarato
+          </label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer">
+            <input type="checkbox" id="stats-versato" ${S.statsFiltro.serie.versato?'checked':''} onchange="onStatsFiltroChange()"> Versato
+          </label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer">
+            <input type="checkbox" id="stats-delta" ${S.statsFiltro.serie.delta?'checked':''} onchange="onStatsFiltroChange()"> Delta
+          </label>
+        </div>
+      </div>
+    </div>
+    <div style="background:#fff;border:1px solid var(--g200);border-radius:var(--r);padding:20px;box-shadow:var(--sh-sm)">
+      <div id="stats-empty" class="empty-row hid">Nessun dato disponibile per i filtri selezionati</div>
+      <canvas id="stats-chart" height="90"></canvas>
+    </div>
+  `;
+  drawStatsChart();
+}
+function onStatsFiltroChange(){
+  S.statsFiltro.sede=$('stats-sede').value;
+  S.statsFiltro.serie.dichiarato=$('stats-dichiarato').checked;
+  S.statsFiltro.serie.versato=$('stats-versato').checked;
+  S.statsFiltro.serie.delta=$('stats-delta').checked;
+  drawStatsChart();
+}
+function drawStatsChart(){
+  const f=S.statsFiltro;
+  let list=S.raccolte.filter(x=>x.stato!=='annullata');
+  if(f.sede)list=list.filter(x=>x.sede_id===f.sede);
+
+  // raggruppo per mese (YYYY-MM) sugli ultimi 12 mesi presenti nei dati
+  const byMonth={};
+  list.forEach(x=>{
+    const d=new Date(x.created_at);
+    const key=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
+    if(!byMonth[key])byMonth[key]={dichiarato:0,versato:0,delta:0};
+    byMonth[key].dichiarato+=Number(x.importo_dichiarato||0);
+    byMonth[key].versato+=Number(x.importo_versato||0);
+    byMonth[key].delta+=Number(x.delta||0);
+  });
+  const months=Object.keys(byMonth).sort();
+  const labels=months.map(m=>{
+    const[y,mo]=m.split('-');
+    return new Date(y,mo-1,1).toLocaleDateString('it-IT',{month:'short',year:'2-digit'});
+  });
+
+  const datasets=[];
+  if(f.serie.dichiarato)datasets.push({label:'Dichiarato',data:months.map(m=>byMonth[m].dichiarato),borderColor:'#9DBF60',backgroundColor:'#9DBF60',tension:.25});
+  if(f.serie.versato)datasets.push({label:'Versato',data:months.map(m=>byMonth[m].versato),borderColor:'#3B7DD8',backgroundColor:'#3B7DD8',tension:.25});
+  if(f.serie.delta)datasets.push({label:'Delta',data:months.map(m=>byMonth[m].delta),borderColor:'#C0392B',backgroundColor:'#C0392B',tension:.25});
+
+  if(_chartInstance){_chartInstance.destroy();_chartInstance=null;}
+  const ctx=document.getElementById('stats-chart');
+  const emptyEl=document.getElementById('stats-empty');
+  if(!ctx)return;
+  if(!months.length){
+    ctx.classList.add('hid');
+    if(emptyEl)emptyEl.classList.remove('hid');
+    return;
+  }
+  ctx.classList.remove('hid');
+  if(emptyEl)emptyEl.classList.add('hid');
+  _chartInstance=new Chart(ctx,{
+    type:'line',
+    data:{labels,datasets},
+    options:{
+      responsive:true,
+      plugins:{legend:{position:'bottom'}},
+      scales:{y:{beginAtZero:true,ticks:{callback:v=>eur(v)}}},
+      interaction:{mode:'index',intersect:false},
+    },
+  });
+}
+const LOG_PAGE_SIZE=30;
+S.logFiltro={azione:'',utente:'',search:'',dataDa:'',dataA:'',pagina:1};
+
+function renderLog(pb){
+  const azioniUniche=[...new Set(S.log.map(l=>l.azione))].sort();
+  pb.innerHTML=`
+    <div class="page-hdr"><h1>Log attività</h1></div>
+    <div class="filters" style="flex-wrap:wrap;gap:10px;margin-bottom:14px">
+      <div class="search-wrap"><input id="log-search" placeholder="Cerca testo..." value="${esc(S.logFiltro.search)}" oninput="onLogFiltroChange('search',this.value)" style="width:200px"></div>
+      <select class="fse" id="log-azione" style="width:auto;padding:6px 10px;font-size:12.5px" onchange="onLogFiltroChange('azione',this.value)">
+        <option value="">Tutte le azioni</option>
+        ${azioniUniche.map(a=>`<option value="${esc(a)}" ${S.logFiltro.azione===a?'selected':''}>${esc(a)}</option>`).join('')}
+      </select>
+      <select class="fse" id="log-utente" style="width:auto;padding:6px 10px;font-size:12.5px" onchange="onLogFiltroChange('utente',this.value)">
+        <option value="">Tutti gli utenti</option>
+        ${S.profili.map(p=>`<option value="${p.id}" ${S.logFiltro.utente===p.id?'selected':''}>${esc(fullName(p))}</option>`).join('')}
+      </select>
+      <input type="date" class="fi" style="width:auto;padding:6px 10px;font-size:12.5px" value="${esc(S.logFiltro.dataDa)}" onchange="onLogFiltroChange('dataDa',this.value)" title="Dal">
+      <input type="date" class="fi" style="width:auto;padding:6px 10px;font-size:12.5px" value="${esc(S.logFiltro.dataA)}" onchange="onLogFiltroChange('dataA',this.value)" title="Al">
+      <button class="btn bs" onclick="resetLogFiltro()">Azzera filtri</button>
+    </div>
+    <table class="dt"><thead><tr><th>Data</th><th>Utente</th><th>Azione</th><th>Dettaglio</th></tr></thead><tbody id="log-tbody"></tbody></table>
+    <div id="log-pager" style="display:flex;align-items:center;justify-content:space-between;margin-top:14px"></div>
+  `;
+  renderLogRows();
+}
+function onLogFiltroChange(key,val){S.logFiltro[key]=val;S.logFiltro.pagina=1;renderLogRows();}
+function resetLogFiltro(){S.logFiltro={azione:'',utente:'',search:'',dataDa:'',dataA:'',pagina:1};renderLog($('pb'));}
+function filteredLog(){
+  const f=S.logFiltro;
+  let list=S.log.slice();
+  if(f.azione)list=list.filter(l=>l.azione===f.azione);
+  if(f.utente)list=list.filter(l=>l.utente_id===f.utente);
+  if(f.dataDa){const da=new Date(f.dataDa+'T00:00:00');list=list.filter(l=>new Date(l.created_at)>=da);}
+  if(f.dataA){const a=new Date(f.dataA+'T23:59:59');list=list.filter(l=>new Date(l.created_at)<=a);}
+  if(f.search){
+    const q=f.search.toLowerCase();
+    list=list.filter(l=>{
+      const utente=fullName(profById(l.utente_id));
+      return `${utente} ${l.azione} ${l.dettaglio||''}`.toLowerCase().includes(q);
+    });
+  }
+  return list;
+}
+function renderLogRows(){
+  const list=filteredLog();
+  const totPagine=Math.max(1,Math.ceil(list.length/LOG_PAGE_SIZE));
+  S.logFiltro.pagina=Math.min(S.logFiltro.pagina,totPagine);
+  const start=(S.logFiltro.pagina-1)*LOG_PAGE_SIZE;
+  const pageItems=list.slice(start,start+LOG_PAGE_SIZE);
+  $('log-tbody').innerHTML=pageItems.map(l=>`<tr><td>${fmtDT(l.created_at)}</td><td>${esc(fullName(profById(l.utente_id)))}</td><td><span class="bg bg-usr">${esc(l.azione)}</span></td><td>${esc(l.dettaglio||'—')}</td></tr>`).join('')||'<tr><td colspan="4" class="empty-row">Nessun log trovato</td></tr>';
+  $('log-pager').innerHTML=`
+    <span style="font-size:12px;color:var(--g500)">${list.length} risultati · pagina ${S.logFiltro.pagina} di ${totPagine}</span>
+    <div style="display:flex;gap:8px">
+      <button class="btn bs" ${S.logFiltro.pagina<=1?'disabled':''} onclick="changeLogPage(-1)">‹ Precedente</button>
+      <button class="btn bs" ${S.logFiltro.pagina>=totPagine?'disabled':''} onclick="changeLogPage(1)">Successiva ›</button>
+    </div>
+  `;
+}
+function changeLogPage(delta){S.logFiltro.pagina+=delta;renderLogRows();}
+
+// ══════════════════════════════════════════
 // INIT
-// ════════════════════════════════════════════════════════
-$('lpw').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
-$('lem').addEventListener('keydown',e=>{if(e.key==='Enter')$('lpw').focus();});
+// ══════════════════════════════════════════
+document.addEventListener('DOMContentLoaded',async()=>{
+  $('login-logo').innerHTML=logoHTML(false);
+  try{
+    const res=await fetch('https://api.github.com/repos/ictmedicalgroup-sudo/servizi/commits?per_page=1');
+    if(res.ok){const[c]=await res.json();const d=new Date(c.commit.committer.date);const s='build '+d.toLocaleDateString('it-IT',{day:'2-digit',month:'2-digit',year:'numeric'})+' '+d.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'});$('login-ver').textContent=s;if($('tb-ver'))$('tb-ver').textContent=s;}
+  }catch(e){}
+  $('lpw').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
+  $('lem').addEventListener('keydown',e=>{if(e.key==='Enter')$('lpw').focus();});
+});
 </script>
+
+
 </body>
 </html>
