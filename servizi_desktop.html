@@ -1164,7 +1164,7 @@ function openUtenteForm(jsonStr){
     </div>
     <div class="fg" id="uf-email-group">
       <label class="fl">Email *</label>
-      <input type="email" class="fi" id="uf-email" value="${esc(p?.email||'')}" ${p?'disabled':''} ${p?'':'oninput="checkEmailLive(this,$(\\'uf-pwd-group\\'),$(\\'uf-pwd\\'))"'} required>
+      <input type="email" class="fi" id="uf-email" value="${esc(p?.email||'')}" ${p?'disabled':''} ${p?'':'oninput="onEmailInput()"'} required>
     </div>
     <div class="fg" id="uf-pwd-group" style="${p?'':'display:none'}">
       <label class="fl">Password ${p?'(lascia vuoto per non modificare)':'*'}</label>
