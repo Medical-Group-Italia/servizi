@@ -575,6 +575,9 @@ function openConf(msg,onOk){
 // CHECK EMAIL (condiviso con manage-user)
 // ════════════════════════════════════════════════════════
 const PWD_WARN_HTML=`<div class="alert ai" style="margin-top:8px;font-size:12px">⚠️ Questo utente esiste già in Supabase. La password non verrà modificata (lascia il campo vuoto).</div>`;
+function onEmailInput(){
+  checkEmailLive($('uf-email'),$('uf-pwd-group'),$('uf-pwd'));
+}
 let _emailTimer=null;
 async function checkEmailLive(emailInput,pwdGroup,pwdInput){
   clearTimeout(_emailTimer);
